@@ -39,6 +39,7 @@ const FormButton = ({
           onClick={() => {
             console.log('showing pop content');
             popContent();
+            history.push('/myprofile/inventory');
           }}
         >
           {text}

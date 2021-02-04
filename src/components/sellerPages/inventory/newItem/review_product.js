@@ -1,9 +1,17 @@
 import React from 'react';
 import PopContent from './popContent';
-import ProductInfo from '../../../pages/ProductInfo/ProductInfo';
+import NewItemInfo from '../../../pages/ProductInfo/NewItemInfo';
 import FormButton from '../../../common/FormButton/FormButton';
 
-function Finalize({ setProgress, slider, formCosolidate, setStatus }) {
+function Finalize({
+  setProgress,
+  slider,
+  formCosolidate,
+  setStatus,
+  mainInfo,
+  specForm,
+  photos,
+}) {
   const formConfirm = () => {
     formCosolidate();
   };
@@ -19,14 +27,14 @@ function Finalize({ setProgress, slider, formCosolidate, setStatus }) {
   };
   return (
     <div className="contents">
-      <ProductInfo />
+      <NewItemInfo photos={photos} mainInfo={mainInfo} specForm={specForm} />
       <FormButton
         setProgress={setProgress}
         slider={slider}
         progressPercent={100}
         text="Save Product"
         review="true"
-        popContent={() => ShowPopContent(setStatus, setProgress, formConfirm)}
+        popContent={() => formConfirm()}
       />
     </div>
   );

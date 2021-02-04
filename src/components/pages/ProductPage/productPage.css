@@ -9,6 +9,14 @@
   justify-content: center;
 
 }
+.product-container-newitem {
+  border-top: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+  justify-content: center;
+
+}
 
 /* .carousel-container {
   height: 300px;
@@ -45,6 +53,14 @@ img {
   width: 50%;
   flex-direction: column;
 }
+.newitem{
+  display: flex;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 1000%;
+  flex-direction: column;
+
+}
 
 .name-price {
   font-size: xx-large;
@@ -62,6 +78,10 @@ img {
 
     display: flex;
     margin-top: 2%;
+}
+.store-name-newitem{
+  display: flex;
+    
 }
 
 h3 {
