@@ -1,8 +1,26 @@
-import React from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import React, { useState, useEffect } from 'react';
 import { Rate, Avatar, Tag } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
+import { getDSData } from '../../../api';
 
 const NewItemInfo = ({ photos, mainInfo, specForm }) => {
+  const [sellerProfile, setSellerProfile] = useState({});
+  const { authState } = useOktaAuth();
+  let oktaStore = JSON.parse(localStorage['okta-token-storage']);
+  let seller_profile_id = oktaStore.idToken.claims.sub;
+
+  //<----------------Get Seller Profile---------------->
+  const getSellerProfile = id => {
+    getDSData(`${process.env.REACT_APP_API_URI}profile/${id}`, authState)
+      .then(res => setSellerProfile(res))
+      .catch(err => {
+        console.log('Seller Name get fail in ItemCard');
+      });
+  };
+  useEffect(() => {
+    getSellerProfile(seller_profile_id);
+  }, []);
   let dollars = mainInfo.price_in_cents / 100;
   return (
     <div className="product-page">
@@ -21,9 +39,9 @@ const NewItemInfo = ({ photos, mainInfo, specForm }) => {
 
           <div className="store-name-newitem">
             <Avatar size="small" icon={<GlobalOutlined />} />
-            <h3>Store Name</h3>
+            <h3>Store: {sellerProfile.seller_name}</h3>
           </div>
-
+          <p>Location: {sellerProfile.physical_address}</p>
           <section>
             <p>
               <span>Description: </span>

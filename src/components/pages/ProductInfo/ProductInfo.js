@@ -7,7 +7,22 @@ import { GlobalOutlined } from '@ant-design/icons';
 
 const ProductInfo = ({ item }) => {
   const [img, setImg] = useState('');
+  const [sellerProfile, setSellerProfile] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
   const { authState } = useOktaAuth();
+  let oktaStore = JSON.parse(localStorage['okta-token-storage']);
+  let seller_profile_id = oktaStore.idToken.claims.sub;
+
+  //<----------------Get Element---------------->
+  const getElement = (id, url, setState, errMessage) => {
+    getDSData(`${process.env.REACT_APP_API_URI}${url}${id}`, authState)
+      .then(res => setState(res))
+      .catch(err => {
+        console.log(errMessage);
+      });
+  };
+  //<----------------Get Image---------------->
   const imgGet = id => {
     getDSData(`${process.env.REACT_APP_API_URI}photo/${id}`, authState)
       .then(res => setImg(res[0]['url']))
@@ -15,8 +30,30 @@ const ProductInfo = ({ item }) => {
         console.log('Img get fail in ProductInfo.');
       });
   };
+  //<----------------Get Seller Profile---------------->
+  const getSellerProfile = id => {
+    getDSData(`${process.env.REACT_APP_API_URI}profile/${id}`, authState)
+      .then(res => setSellerProfile(res))
+      .catch(err => {
+        console.log('Seller Name get fail in ItemCard');
+      });
+  };
   useEffect(() => {
     imgGet(item.id);
+    // getSellerProfile(seller_profile_id);
+    getElement(
+      seller_profile_id,
+      'profile/',
+      setSellerProfile,
+      'Seller Name get fail in ItemCard'
+    );
+    getElement(
+      item.id,
+      'category/',
+      setCategories,
+      'Category get fail in ItemCard'
+    );
+    getElement(item.id, 'tag/item/', setTags, 'Tag get fail in ItemCard');
   }, []);
 
   let dollars = item.price_in_cents / 100;
@@ -39,9 +76,9 @@ const ProductInfo = ({ item }) => {
           </div>
           <div className="store-name">
             <Avatar size="small" icon={<GlobalOutlined />} />
-            <h3>Store Name</h3>
+            <h3>Store: {sellerProfile.seller_name}</h3>
           </div>
-          <p>location</p>
+          <p>Location: {sellerProfile.physical_address}</p>
           <section>
             <p>{item.description}</p>
             {item.quantity_available !== 0 ? (
@@ -50,13 +87,29 @@ const ProductInfo = ({ item }) => {
               <h2 style={{ color: 'red' }}>QTY: {item.quantity_available}</h2>
             )}
           </section>
+
+          <div
+            className="category-tag "
+            style={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+            }}
+          >
+            <h3>Categories: </h3>
+            {categories.map(category => (
+              <Tag className="tags" style={{ width: 'auto' }}>
+                {category.category_name}
+              </Tag>
+            ))}
+          </div>
         </div>
       </div>
-      <section className="tags-container">
-        <Tag className="tags">Tag</Tag>
-        <Tag className="tags">Tag</Tag>
-        <Tag className="tags">Tag</Tag>
-        <Tag className="tags">Tag</Tag>
+      <section className="tags-container" style={{ paddingLeft: '12rem' }}>
+        {tags.map(tag => (
+          <Tag className="tags" style={{ width: 'auto' }}>
+            {tag.tag_name}
+          </Tag>
+        ))}
       </section>
     </div>
   );

@@ -29,3 +29,17 @@
 .cardPrice{
     margin-top: 10%;
 }
+.categories-tags{
+    display: flex;
+    justify-content: space-around;
+
+}
+.category-tag{
+    display: flex;
+    flex-direction: column;
+    
+}
+.category-tag h3{
+    color: rgb(69, 108, 192);
+    margin: 0 auto;
+}
