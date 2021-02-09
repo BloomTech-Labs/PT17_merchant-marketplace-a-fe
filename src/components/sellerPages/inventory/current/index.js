@@ -9,7 +9,12 @@ import NavBar from '../../../common/navBar';
 import SearchResults from './searchResults';
 import useSearch from '../../../common/customHooks/useSearch';
 
-function CurrentInventory({ inventory, fetchProducts, getProductsStatus }) {
+function CurrentInventory({
+  state,
+  inventory,
+  fetchProducts,
+  getProductsStatus,
+}) {
   const [searchData, setSearchData] = useState({});
   const { authState } = useOktaAuth();
 
@@ -18,7 +23,8 @@ function CurrentInventory({ inventory, fetchProducts, getProductsStatus }) {
   }, []);
 
   const displayedData = useSearch(inventory, 'name', searchData);
-  console.log(inventory);
+  console.log('inventory', inventory);
+  console.log('Redux state: ', state);
   return (
     <>
       <NavBar searchVisible={false} setData={setSearchData} />
@@ -28,13 +34,13 @@ function CurrentInventory({ inventory, fetchProducts, getProductsStatus }) {
           <Link to="/myprofile/inventory/additem">
             <Button>+Add Item</Button>
           </Link>
-
         </div>
       </div>
     </>
   );
 }
 const mapStateToProps = state => ({
+  state: state,
   inventory: state.products.products,
   getProductsStatus: state.products.getProductsStatus,
 });

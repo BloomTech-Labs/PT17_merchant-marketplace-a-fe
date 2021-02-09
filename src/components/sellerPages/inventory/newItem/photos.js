@@ -7,7 +7,7 @@ import uploadcare from 'uploadcare-widget';
 import { addItemImage } from '../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 
-function AddPhotos({ setProgress, slider, setData, photos }) {
+function AddPhotos({ setProgress, slider, setPhotos, photos }) {
   const { authState } = useOktaAuth();
   function openUploadDialog(e) {
     let dialog = uploadcare.openDialog(null, {
@@ -16,9 +16,8 @@ function AddPhotos({ setProgress, slider, setData, photos }) {
     });
     dialog.done(function(file, fileGroup, list) {
       file.promise().done(function(fileInfo) {
-        setData({ 'photos': fileInfo.originalUrl });
+        setPhotos(fileInfo.originalUrl);
         console.log('fileinfo: ', fileInfo);
-        addItemImage(authState, 15, fileInfo.originalUrl);
       });
     });
   }

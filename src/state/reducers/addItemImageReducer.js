@@ -15,7 +15,6 @@ const addItemImageReducer = (state = initialState, action) => {
     case ADD_ITEM_IMAGE_START:
       return { ...state, getAddItemImageStatus: requestStatus.loading };
     case ADD_ITEM_IMAGE_SUCCESS:
-      console.log(action.payload);
       return {
         newItemImage: action.payload,
         getAddItemImageStatus: requestStatus.loading,

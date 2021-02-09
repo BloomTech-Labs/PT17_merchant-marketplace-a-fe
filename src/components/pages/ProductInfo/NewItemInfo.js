@@ -8,7 +8,7 @@ const NewItemInfo = ({ photos, mainInfo, specForm }) => {
     <div className="product-page">
       <div className="product-container-newitem">
         <div>
-          <img src={photos.photos} />
+          <img src={photos} />
         </div>
 
         <div className="newitem">

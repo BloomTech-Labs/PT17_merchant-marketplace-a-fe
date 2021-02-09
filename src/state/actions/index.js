@@ -37,8 +37,6 @@ export const fetchProducts = authState => dispatch => {
 
 export const addItemImage = (authState, itemId, photoUrl) => dispatch => {
   dispatch({ type: ADD_ITEM_IMAGE_START });
-
-  console.log('addItemImage');
   postData(
     process.env.REACT_APP_API_URI + 'photos',
     {
@@ -48,7 +46,6 @@ export const addItemImage = (authState, itemId, photoUrl) => dispatch => {
     authState
   )
     .then(response => {
-      console.log('success response', response);
       dispatch({ type: ADD_ITEM_IMAGE_SUCCESS, payload: response });
     })
     .catch(err => {
@@ -56,18 +53,18 @@ export const addItemImage = (authState, itemId, photoUrl) => dispatch => {
     });
 };
 
-export const addProduct = (newProduct, authState) => dispatch => {
+export const addProduct = (newProduct, authState) => async dispatch => {
   dispatch({ type: ADD_PRODUCT_START });
-
-  postData(
-    process.env.REACT_APP_API_URI + 'item',
-    newProduct.new_item,
-    authState
-  )
-    .then(response => {
-      dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response.data });
-    })
-    .catch(error => {
-      dispatch({ type: ADD_PRODUCT_ERROR, payload: error });
-    });
+  try {
+    let response = await postData(
+      process.env.REACT_APP_API_URI + 'item',
+      newProduct.new_item,
+      authState
+    );
+    dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response[0] });
+    return response[0];
+  } catch (error) {
+    dispatch({ type: ADD_PRODUCT_ERROR, payload: error });
+    return error;
+  }
 };

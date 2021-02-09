@@ -11,7 +11,7 @@ function ItemCard({ name, description, price, image, count }) {
     getDSData(`${process.env.REACT_APP_API_URI}photo/${id}`, authState)
       .then(res => setImg(res[0]['url']))
       .catch(err => {
-        console.log('Img get fail.');
+        console.log('Img get fail. in ItemCard');
       });
   };
   useEffect(() => {
