@@ -27,7 +27,7 @@ function Inventory({ status, state, addProduct, addItemImage }) {
     let completeObject = {
       new_item: {
         ...mainInfo,
-        'seller_profile_id': seller_profile_id,
+        seller_profile_id: seller_profile_id,
       },
       spec: {
         ...specForm,
