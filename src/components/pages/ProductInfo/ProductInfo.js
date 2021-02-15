@@ -30,17 +30,9 @@ const ProductInfo = ({ item }) => {
         console.log('Img get fail in ProductInfo.');
       });
   };
-  //<----------------Get Seller Profile---------------->
-  const getSellerProfile = id => {
-    getDSData(`${process.env.REACT_APP_API_URI}profile/${id}`, authState)
-      .then(res => setSellerProfile(res))
-      .catch(err => {
-        console.log('Seller Name get fail in ItemCard');
-      });
-  };
+
   useEffect(() => {
     imgGet(item.id);
-    // getSellerProfile(seller_profile_id);
     getElement(
       seller_profile_id,
       'profile/',

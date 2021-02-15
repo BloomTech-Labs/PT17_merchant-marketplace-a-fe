@@ -1,6 +1,6 @@
 
 .cardContainer{
-    height: 130px;
+    height: auto;
     border-bottom: solid lightgray 1px;
     display: flex;
     justify-content: space-between;
@@ -42,4 +42,8 @@
 .category-tag h3{
     color: rgb(69, 108, 192);
     margin: 0 auto;
+}
+.category{
+    color: grey;
+    align-content: flex-end;
 }

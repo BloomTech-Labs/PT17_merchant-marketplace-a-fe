@@ -2,16 +2,26 @@ import React, { useRef, useState } from 'react';
 import { Button, Carousel } from 'antd';
 import './inventoryStyles.css';
 import NewItem from './newItem/main_info';
-import Specifications from './newItem/specifications';
+import CategoriesInfo from './newItem/categories_info';
 import AddPhotos from './newItem/photos';
 import Finalize from './newItem/review_product';
 import ProgressBar from '../../common/progressBar/progressBar';
 import NavBar from '../../common/navBar';
-import { addProduct, addItemImage } from '../../../state/actions/index';
+import {
+  addProduct,
+  addItemImage,
+  addProductCategory,
+} from '../../../state/actions/index';
 import { connect } from 'react-redux';
 import { useOktaAuth } from '@okta/okta-react';
 
-function Inventory({ status, state, addProduct, addItemImage }) {
+function Inventory({
+  status,
+  state,
+  addProduct,
+  addItemImage,
+  addProductCategory,
+}) {
   const { authState } = useOktaAuth();
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
   let seller_profile_id = oktaStore.idToken.claims.sub;
@@ -20,7 +30,7 @@ function Inventory({ status, state, addProduct, addItemImage }) {
   const [newItemData, setNewItemData] = useState({});
   // State for each form section
   const [mainInfo, setMainInfo] = useState({});
-  const [specForm, setSpecForm] = useState({});
+  const [categoryInfo, setCategoryInfo] = useState([]);
   const [photos, setPhotos] = useState({});
 
   const formCosolidate = async () => {
@@ -29,8 +39,8 @@ function Inventory({ status, state, addProduct, addItemImage }) {
         ...mainInfo,
         seller_profile_id: seller_profile_id,
       },
-      spec: {
-        ...specForm,
+      category: {
+        ...categoryInfo,
       },
       photos: {
         photos,
@@ -41,6 +51,9 @@ function Inventory({ status, state, addProduct, addItemImage }) {
 
     addProduct(completeObject, authState).then(response => {
       addItemImage(authState, response.id, photos);
+      categoryInfo.forEach(category =>
+        addProductCategory(authState, response.id, category.id)
+      );
     });
   };
 
@@ -64,11 +77,11 @@ function Inventory({ status, state, addProduct, addItemImage }) {
               setProgress={setProgressPoint}
               mainInfo={mainInfo}
             />
-            <Specifications
+            <CategoriesInfo
               slider={slider}
-              setData={setSpecForm}
+              setData={setCategoryInfo}
               setProgress={setProgressPoint}
-              specForm={specForm}
+              categoryInfo={categoryInfo}
             />
             <AddPhotos
               slider={slider}
@@ -82,7 +95,7 @@ function Inventory({ status, state, addProduct, addItemImage }) {
               setProgress={setProgressPoint}
               formCosolidate={formCosolidate}
               mainInfo={mainInfo}
-              specForm={specForm}
+              categoryInfo={categoryInfo}
               photos={photos}
             />
           </Carousel>
@@ -91,7 +104,7 @@ function Inventory({ status, state, addProduct, addItemImage }) {
         <Button
           onClick={() => {
             console.log(mainInfo);
-            console.log(specForm);
+            console.log(categoryInfo);
             console.log(photos);
             console.log('final object:', newItemData);
           }}
@@ -106,6 +119,8 @@ const mapStateToProps = state => ({
   status: state.addProduct.getAddProductStatus, //We could use this status to see the status of the api call post request
 });
 
-export default connect(mapStateToProps, { addProduct, addItemImage })(
-  Inventory
-);
+export default connect(mapStateToProps, {
+  addProduct,
+  addItemImage,
+  addProductCategory,
+})(Inventory);

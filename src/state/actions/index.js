@@ -25,6 +25,10 @@ export const ADD_CATEGORY_START = 'ADD_CATEGORY_START';
 export const ADD_CATEGORY_SUCCESS = 'ADD_CATEGORY_SUCCESS';
 export const ADD_CATEGORY_ERROR = 'ADD_CATEGORY_ERROR';
 
+export const ADD_PRODUCT_CATEGORY_START = 'ADD_PRODUCT_CATEGORY_START';
+export const ADD_PRODUCT_CATEGORY_SUCCESS = 'ADD_PRODUCT_CATEGORY_SUCCESS';
+export const ADD_PRODUCT_CATEGORY_ERROR = 'ADD_PRODUCT_CATEGORY_ERROR';
+
 export const ADD_ITEM_IMAGE_START = 'ADD_ITEM_IMAGE_START';
 export const ADD_ITEM_IMAGE_SUCCESS = 'ADD_ITEM_IMAGE_SUCCESS';
 export const ADD_ITEM_IMAGE_ERROR = 'ADD_ITEM_IMAGE_ERROR';
@@ -104,6 +108,43 @@ export const addProduct = (newProduct, authState) => async dispatch => {
     dispatch({ type: ADD_PRODUCT_ERROR, payload: error });
     return error;
   }
+};
+//<---------------addCategory---------------------->
+export const addCategory = (newCategory, authState) => dispatch => {
+  dispatch({ type: ADD_CATEGORY_START });
+  postData(
+    process.env.REACT_APP_API_URI + 'categories/',
+    {
+      category_name: newCategory,
+    },
+    authState
+  )
+    .then(response => {
+      dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_CATEGORY_ERROR, payload: err });
+    });
+};
+//<---------------addProductCategory---------------------->
+export const addProductCategory = (
+  authState,
+  productID,
+  categoryID
+) => dispatch => {
+  dispatch({ type: ADD_PRODUCT_CATEGORY_START });
+  postData(
+    process.env.REACT_APP_API_URI +
+      `item/${productID}/categories/${categoryID}`,
+    { category_id: categoryID, item_id: productID },
+    authState
+  )
+    .then(response => {
+      dispatch({ type: ADD_PRODUCT_CATEGORY_SUCCESS, payload: response });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_PRODUCT_CATEGORY_ERROR, payload: err });
+    });
 };
 
 export const fetchMyInfo = authState => dispatch => {

@@ -9,7 +9,7 @@ function Finalize({
   formCosolidate,
   setStatus,
   mainInfo,
-  specForm,
+  categoryInfo,
   photos,
 }) {
   const formConfirm = () => {
@@ -27,7 +27,11 @@ function Finalize({
   };
   return (
     <div className="contents">
-      <NewItemInfo photos={photos} mainInfo={mainInfo} specForm={specForm} />
+      <NewItemInfo
+        photos={photos}
+        mainInfo={mainInfo}
+        categoryInfo={categoryInfo}
+      />
       <FormButton
         setProgress={setProgress}
         slider={slider}

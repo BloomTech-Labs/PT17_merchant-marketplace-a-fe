@@ -4,7 +4,7 @@ import { Rate, Avatar, Tag } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
 import { getDSData } from '../../../api';
 
-const NewItemInfo = ({ photos, mainInfo, specForm }) => {
+const NewItemInfo = ({ photos, mainInfo, categoryInfo }) => {
   const [sellerProfile, setSellerProfile] = useState({});
   const { authState } = useOktaAuth();
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
@@ -39,12 +39,17 @@ const NewItemInfo = ({ photos, mainInfo, specForm }) => {
 
           <div className="store-name-newitem">
             <Avatar size="small" icon={<GlobalOutlined />} />
-            <h3>Store: {sellerProfile.seller_name}</h3>
+            <h3>
+              <span className="title">Store:</span> {sellerProfile.seller_name}
+            </h3>
           </div>
-          <p>Location: {sellerProfile.physical_address}</p>
+          <p>
+            <span className="title">Location:</span>{' '}
+            {sellerProfile.physical_address}
+          </p>
           <section>
             <p>
-              <span>Description: </span>
+              <span className="title">Description: </span>
               {mainInfo.description}
             </p>
             {mainInfo.quantity_available !== 0 ? (
@@ -57,6 +62,12 @@ const NewItemInfo = ({ photos, mainInfo, specForm }) => {
               </h2>
             )}
           </section>
+          <div className="categories-container">
+            <div className="title">Categories: </div>
+            {categoryInfo.map(category => (
+              <div>{category.category_name}</div>
+            ))}
+          </div>
         </div>
       </div>
       <section className="tags-container">
