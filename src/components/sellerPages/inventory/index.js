@@ -3,6 +3,7 @@ import { Button, Carousel } from 'antd';
 import './inventoryStyles.css';
 import NewItem from './newItem/main_info';
 import CategoriesInfo from './newItem/categories_info';
+import TagsInfo from './newItem/tags_info';
 import AddPhotos from './newItem/photos';
 import Finalize from './newItem/review_product';
 import ProgressBar from '../../common/progressBar/progressBar';
@@ -11,6 +12,7 @@ import {
   addProduct,
   addItemImage,
   addProductCategory,
+  addProductTag,
 } from '../../../state/actions/index';
 import { connect } from 'react-redux';
 import { useOktaAuth } from '@okta/okta-react';
@@ -21,6 +23,7 @@ function Inventory({
   addProduct,
   addItemImage,
   addProductCategory,
+  addProductTag,
 }) {
   const { authState } = useOktaAuth();
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
@@ -31,6 +34,7 @@ function Inventory({
   // State for each form section
   const [mainInfo, setMainInfo] = useState({});
   const [categoryInfo, setCategoryInfo] = useState([]);
+  const [tagInfo, setTagInfo] = useState([]);
   const [photos, setPhotos] = useState({});
 
   const formCosolidate = async () => {
@@ -41,6 +45,9 @@ function Inventory({
       },
       category: {
         ...categoryInfo,
+      },
+      tag: {
+        ...tagInfo,
       },
       photos: {
         photos,
@@ -54,6 +61,7 @@ function Inventory({
       categoryInfo.forEach(category =>
         addProductCategory(authState, response.id, category.id)
       );
+      tagInfo.forEach(tag => addProductTag(authState, response.id, tag.id));
     });
   };
 
@@ -83,6 +91,12 @@ function Inventory({
               setProgress={setProgressPoint}
               categoryInfo={categoryInfo}
             />
+            <TagsInfo
+              slider={slider}
+              setData={setTagInfo}
+              setProgress={setProgressPoint}
+              tagInfo={tagInfo}
+            />
             <AddPhotos
               slider={slider}
               setProgress={setProgressPoint}
@@ -96,6 +110,7 @@ function Inventory({
               formCosolidate={formCosolidate}
               mainInfo={mainInfo}
               categoryInfo={categoryInfo}
+              tagInfo={tagInfo}
               photos={photos}
             />
           </Carousel>
@@ -105,6 +120,7 @@ function Inventory({
           onClick={() => {
             console.log(mainInfo);
             console.log(categoryInfo);
+            console.log(tagInfo);
             console.log(photos);
             console.log('final object:', newItemData);
           }}
@@ -123,4 +139,5 @@ export default connect(mapStateToProps, {
   addProduct,
   addItemImage,
   addProductCategory,
+  addProductTag,
 })(Inventory);

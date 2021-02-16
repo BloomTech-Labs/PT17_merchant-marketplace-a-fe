@@ -10,6 +10,7 @@ function Finalize({
   setStatus,
   mainInfo,
   categoryInfo,
+  tagInfo,
   photos,
 }) {
   const formConfirm = () => {
@@ -31,6 +32,7 @@ function Finalize({
         photos={photos}
         mainInfo={mainInfo}
         categoryInfo={categoryInfo}
+        tagInfo={tagInfo}
       />
       <FormButton
         setProgress={setProgress}

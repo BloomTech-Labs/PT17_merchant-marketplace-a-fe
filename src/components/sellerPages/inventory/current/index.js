@@ -2,7 +2,11 @@ import { useOktaAuth } from '@okta/okta-react/src/OktaContext';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import { connect } from 'react-redux';
-import { fetchProducts, fetchCategories } from '../../../../state/actions';
+import {
+  fetchProducts,
+  fetchCategories,
+  fetchTags,
+} from '../../../../state/actions';
 import { Link } from 'react-router-dom';
 
 import NavBar from '../../../common/navBar';
@@ -14,8 +18,10 @@ function CurrentInventory({
   inventory,
   fetchProducts,
   fetchCategories,
+  fetchTags,
   getProductsStatus,
   getCategoriesStatus,
+  getTagsStatus,
 }) {
   const [searchData, setSearchData] = useState({});
   const { authState } = useOktaAuth();
@@ -23,6 +29,7 @@ function CurrentInventory({
   useEffect(() => {
     fetchProducts(authState);
     fetchCategories(authState);
+    fetchTags(authState);
   }, []);
 
   const displayedData = useSearch(inventory, 'name', searchData);
@@ -47,8 +54,11 @@ const mapStateToProps = state => ({
   inventory: state.products.products,
   getProductsStatus: state.products.getProductsStatus,
   getCategoriesStatus: state.categories.getCategoriesStatus,
+  getTagsStatus: state.tags.getTagsStatus,
 });
 
-export default connect(mapStateToProps, { fetchProducts, fetchCategories })(
-  CurrentInventory
-);
+export default connect(mapStateToProps, {
+  fetchProducts,
+  fetchCategories,
+  fetchTags,
+})(CurrentInventory);

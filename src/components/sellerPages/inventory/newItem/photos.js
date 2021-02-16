@@ -92,7 +92,7 @@ function AddPhotos({ setProgress, slider, setPhotos, photos }) {
       <FormButton
         setProgress={setProgress}
         slider={slider}
-        progressPercent={60}
+        progressPercent={80}
         text="Next"
       />
     </div>

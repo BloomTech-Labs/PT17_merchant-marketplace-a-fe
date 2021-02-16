@@ -7,7 +7,10 @@ function SearchResults({ data, filter }) {
   return (
     <div>
       {searchData.map(item => (
-        <NavLink to={`/myprofile/inventory/productpage/${item.id}`}>
+        <NavLink
+          to={`/myprofile/inventory/productpage/${item.id}`}
+          key={item.id}
+        >
           <ItemCard
             id={item.id}
             key={item.id}

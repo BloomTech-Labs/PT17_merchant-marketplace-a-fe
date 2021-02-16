@@ -50,13 +50,15 @@ function ItemCard({ name, description, price, image, count }) {
           <div className="category-tag ">
             <h3>Categories: </h3>
             {categories.map(category => (
-              <p className="category">{category.category_name}</p>
+              <p className="category" key={category.id}>
+                {category.category_name}
+              </p>
             ))}
           </div>
           <div className="category-tag">
             <h3>Tags: </h3>
             {tags.map(tag => (
-              <Tag className="tags" style={{ width: 'auto' }}>
+              <Tag className="tags" style={{ width: 'auto' }} key={tag.id}>
                 {tag.tag_name}
               </Tag>
             ))}
