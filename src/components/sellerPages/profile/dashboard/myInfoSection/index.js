@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import { fetchMyInfo, editMyInfo } from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 
-function MyInfo(props, fetchMyInfo, editMyInfo) {
+function MyInfo(props) {
   const { authState } = useOktaAuth();
-
-  console.log('props', props);
 
   const editedState = {
     id: '00ultwew80Onb2vOT4x6',
@@ -20,7 +18,7 @@ function MyInfo(props, fetchMyInfo, editMyInfo) {
 
   useEffect(() => {
     props.fetchMyInfo(authState);
-  }, []);
+  });
 
   function clicked(event) {
     props.editMyInfo(authState, editedState);

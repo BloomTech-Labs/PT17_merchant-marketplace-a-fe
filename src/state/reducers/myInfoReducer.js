@@ -20,7 +20,6 @@ const myInfoReducer = (state = initialState, action) => {
     case FETCH_MY_INFO_START:
       return { ...state, fetchMyInfoStatus: requestStatus.loading };
     case FETCH_MY_INFO_SUCCESS:
-      const newState = action.payload;
       return {
         ...state,
         myInfo: action.payload,

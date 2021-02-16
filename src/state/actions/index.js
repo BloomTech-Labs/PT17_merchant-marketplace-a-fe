@@ -3,7 +3,7 @@ import {
   sleep,
   getExampleData,
   getProfileData,
-  putProfileData,
+  putData,
   getProfileIdData,
   getDSData,
   postData,
@@ -109,6 +109,7 @@ export const addProduct = (newProduct, authState) => async dispatch => {
     return error;
   }
 };
+
 //<---------------addCategory---------------------->
 export const addCategory = (newCategory, authState) => dispatch => {
   dispatch({ type: ADD_CATEGORY_START });
@@ -161,16 +162,17 @@ export const fetchMyInfo = authState => dispatch => {
     });
 };
 
-export const editMyInfo = (authState, editedInfo) => dispatch => {
+export const editMyInfo = (authState, editedInfo) => async dispatch => {
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
   let oktaId = oktaStore.idToken.claims.sub;
-
   editedInfo.id = oktaId;
 
-  console.log('editedInfo in actions', editedInfo);
-
   dispatch({ type: EDIT_MY_INFO_START });
-  putProfileData(authState, editedInfo)
+  putData(
+    process.env.REACT_APP_API_URI + 'profile/',
+    editedInfo,
+    authState
+  )
     .then(response => {
       dispatch({ type: EDIT_MY_INFO_SUCCESS, payload: response });
     })
