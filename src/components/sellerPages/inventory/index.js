@@ -35,7 +35,7 @@ function Inventory({
   const [mainInfo, setMainInfo] = useState({});
   const [categoryInfo, setCategoryInfo] = useState([]);
   const [tagInfo, setTagInfo] = useState([]);
-  const [photos, setPhotos] = useState({});
+  const [photos, setPhotos] = useState('');
 
   const formCosolidate = async () => {
     let completeObject = {
