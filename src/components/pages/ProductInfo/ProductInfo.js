@@ -2,8 +2,11 @@ import { useOktaAuth } from '@okta/okta-react';
 import React, { useEffect, useState } from 'react';
 import { getDSData } from '../../../api';
 import ProductCarousel from '../ProductPage/ProductCarousel';
-import { Rate, Avatar, Tag } from 'antd';
+import { Rate, Avatar, Tag, Button } from 'antd';
 import { GlobalOutlined } from '@ant-design/icons';
+import { deleteProduct } from '../../../state/actions';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const ProductInfo = ({ item }) => {
   const [img, setImg] = useState('');
@@ -11,6 +14,8 @@ const ProductInfo = ({ item }) => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const { authState } = useOktaAuth();
+  const history = useHistory();
+  const dispatch = useDispatch();
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
   let seller_profile_id = oktaStore.idToken.claims.sub;
 
@@ -29,6 +34,12 @@ const ProductInfo = ({ item }) => {
       .catch(err => {
         console.log('Img get fail in ProductInfo.');
       });
+  };
+  //--------------delete product ---------------->
+  const delProduct = e => {
+    e.preventDefault();
+    dispatch(deleteProduct(item.id, authState));
+    history.push('/myprofile/inventory');
   };
 
   useEffect(() => {
@@ -87,11 +98,11 @@ const ProductInfo = ({ item }) => {
               justifyContent: 'space-evenly',
             }}
           >
-            <h3>Categories: </h3>
+            <h3 className="catH3">Categories: </h3>
             {categories.map(category => (
-              <Tag className="tags" style={{ width: 'auto' }} key={category.id}>
+              <div className="cats" key={category.id}>
                 {category.category_name}
-              </Tag>
+              </div>
             ))}
           </div>
         </div>
@@ -103,6 +114,9 @@ const ProductInfo = ({ item }) => {
           </Tag>
         ))}
       </section>
+      <Button onClick={delProduct} className="deleteBtn">
+        Delete Item
+      </Button>
     </div>
   );
 };

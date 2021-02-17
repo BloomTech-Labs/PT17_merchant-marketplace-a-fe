@@ -7,6 +7,7 @@ import {
   getProfileIdData,
   getDSData,
   postData,
+  deleteData,
 } from '../../api/index';
 
 export const FETCH_PRODUCTS_START = 'FETCH_PRODUCTS_START';
@@ -52,6 +53,10 @@ export const FETCH_MY_INFO_ERROR = 'FETCH_MY_INFO_ERROR';
 export const EDIT_MY_INFO_START = 'EDIT_MY_INFO_START';
 export const EDIT_MY_INFO_SUCCESS = 'EDIT_MY_INFO_SUCCESS';
 export const EDIT_MY_INFO_ERROR = 'EDIT_MY_INFO_ERROR';
+
+export const DELETE_PRODUCT_START = 'DELETE_PRODUCT_START';
+export const DELETE_PRODUCT_SUCCESS = 'DELETE_PRODUCT_SUCCESS';
+export const DELETE_PRODUCT_ERROR = 'DELETE_PRODUCT_ERROR';
 
 //=================FETCH====================
 //<------------fetchProducts--------------->
@@ -207,6 +212,20 @@ export const addProductTag = (authState, productID, tagID) => dispatch => {
     });
 };
 
+//=================DELETE====================
+//<------------deleteProduct--------------->
+export const deleteProduct = (itemId, authState) => dispatch => {
+  dispatch({ type: DELETE_PRODUCT_START });
+  deleteData(process.env.REACT_APP_API_URI + `items/${itemId}/`, authState)
+    .then(response => {
+      console.log('delete item response.data', response.data);
+      dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({ type: DELETE_PRODUCT_ERROR, payload: error });
+    });
+};
+
 export const fetchMyInfo = authState => dispatch => {
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
   let oktaId = oktaStore.idToken.claims.sub;
@@ -227,11 +246,7 @@ export const editMyInfo = (authState, editedInfo) => async dispatch => {
   editedInfo.id = oktaId;
 
   dispatch({ type: EDIT_MY_INFO_START });
-  putData(
-    process.env.REACT_APP_API_URI + 'profile/',
-    editedInfo,
-    authState
-  )
+  putData(process.env.REACT_APP_API_URI + 'profile/', editedInfo, authState)
     .then(response => {
       dispatch({ type: EDIT_MY_INFO_SUCCESS, payload: response });
     })

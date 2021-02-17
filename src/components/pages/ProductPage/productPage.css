@@ -103,6 +103,13 @@ h3 {
 .dollars{
   margin-left: 2rem;
 }
+.deleteBtn{
+  margin-left: 30%;
+  margin-top: 2rem;
+}
+.category-tag h3{
+  margin-left: inherit;
+}
 
 
 
