@@ -3,7 +3,7 @@ import ItemCard from '../../../common/cards/normalItem';
 import useSearch from '../../../common/customHooks/useSearch';
 import { NavLink } from 'react-router-dom';
 function SearchResults({ data, filter }) {
-  const searchData = useSearch(data, 'name', filter);
+  const searchData = useSearch(data, 'item_name', filter);
   return (
     <div>
       {searchData.map(item => (
@@ -19,6 +19,7 @@ function SearchResults({ data, filter }) {
             description={item.description}
             count={item.quantity_available}
             image={item.id}
+            published={item.published}
           />
         </NavLink>
       ))}

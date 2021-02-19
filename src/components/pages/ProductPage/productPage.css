@@ -110,6 +110,12 @@ h3 {
 .category-tag h3{
   margin-left: inherit;
 }
+.published{
+  margin-left: 0.5rem;
+}
+.published-container{
+  margin-top: 1rem;
+}
 
 
 

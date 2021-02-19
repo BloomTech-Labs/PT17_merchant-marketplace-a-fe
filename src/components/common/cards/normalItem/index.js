@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { getDSData } from '../../../../api';
 import './itemCardStyles.css';
 import { Tag } from 'antd';
+import { MinusCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
-function ItemCard({ name, description, price, image, count }) {
+function ItemCard({ name, description, price, image, count, published }) {
   const [img, setImg] = useState('');
   const { authState } = useOktaAuth();
   const [categories, setCategories] = useState([]);
@@ -72,6 +73,11 @@ function ItemCard({ name, description, price, image, count }) {
           <h2 style={{ color: 'green' }}>QTY: {count}</h2>
         ) : (
           <h2 style={{ color: 'red' }}>QTY: {count}</h2>
+        )}
+        {published ? (
+          <CheckCircleOutlined style={{ fontSize: '20px', color: 'green' }} />
+        ) : (
+          <MinusCircleOutlined style={{ fontSize: '20px', color: 'red' }} />
         )}
       </div>
     </div>

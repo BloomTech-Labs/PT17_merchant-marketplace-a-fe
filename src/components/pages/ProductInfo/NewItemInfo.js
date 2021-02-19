@@ -1,7 +1,11 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Rate, Avatar, Tag } from 'antd';
-import { GlobalOutlined } from '@ant-design/icons';
+import {
+  GlobalOutlined,
+  MinusCircleOutlined,
+  CheckCircleOutlined,
+} from '@ant-design/icons';
 import { getDSData } from '../../../api';
 
 const NewItemInfo = ({ photos, mainInfo, categoryInfo, tagInfo }) => {
@@ -76,6 +80,17 @@ const NewItemInfo = ({ photos, mainInfo, categoryInfo, tagInfo }) => {
           <Tag key={tag.id}>{tag.tag_name}</Tag>
         ))}
       </section>
+      {mainInfo.published ? (
+        <div className="published-container">
+          <CheckCircleOutlined style={{ fontSize: '18px', color: 'green' }} />
+          <span className="published">published</span>
+        </div>
+      ) : (
+        <div className="published-container">
+          <MinusCircleOutlined style={{ fontSize: '18px', color: 'red' }} />
+          <span className="published">unpublished</span>
+        </div>
+      )}
     </div>
   );
 };

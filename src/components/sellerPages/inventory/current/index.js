@@ -32,7 +32,7 @@ function CurrentInventory({
     fetchTags(authState);
   }, []);
 
-  const displayedData = useSearch(inventory, 'name', searchData);
+  const displayedData = useSearch(inventory, 'item_name', searchData);
   console.log('inventory', inventory);
   console.log('Redux state: ', state);
   return (

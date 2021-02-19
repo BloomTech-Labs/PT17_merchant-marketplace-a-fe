@@ -6,22 +6,18 @@ const { Option } = Select;
 
 function NewItem({ setProgress, slider, setData }) {
   const [form] = Form.useForm();
-  const [checkedPublished, setCheckedPublished] = useState(false);
-  const [checkName, setCheckName] = useState('');
-
-  const handleCheckboxChange = e => {
-    setCheckedPublished(e.target.checked);
-    setCheckName(e.target.name);
-  };
 
   const onFinish = values => {
-    setData({ ...values, [checkName]: checkedPublished });
+    setData(values);
+  };
+  const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
     <div className="contents">
       <h1>Main Information</h1>
-      <Form form={form} onFinish={onFinish}>
+      <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
         {/*======================Product Name========================== */}
         <Form.Item
           name="item_name"
@@ -66,13 +62,14 @@ function NewItem({ setProgress, slider, setData }) {
           />
         </Form.Item>
         {/*===============Published================= */}
-        <Form.Item label="Published">
-          <Checkbox
-            required
-            name="published"
-            defaultValue={checkedPublished}
-            onChange={handleCheckboxChange}
-          ></Checkbox>
+        <Form.Item
+          label="Published"
+          name="published"
+          valuePropName="checked"
+          required
+          initialValue={false}
+        >
+          <Checkbox></Checkbox>
         </Form.Item>
 
         <FormButton

@@ -1,12 +1,21 @@
-export default function useSearch(initialData, catagory, searchData) {
+export default function useSearch(initialData, keyCategory, searchData) {
   if (searchData.length > 0) {
-    const test = [];
-    initialData.map(item => {
-      if (item[catagory].includes(searchData)) {
-        test.push(item);
-      }
-    });
-    return test;
+    let output = [];
+    if (searchData === '$#&main') {
+      return initialData;
+    } else if (searchData === '$#&published') {
+      output = initialData.filter(item => item.published);
+    } else if (searchData === '$#&unpublished') {
+      output = initialData.filter(item => !item.published);
+    } else {
+      initialData.map(item => {
+        if (item[keyCategory].includes(searchData)) {
+          output.push(item);
+        }
+      });
+    }
+
+    return output;
   } else {
     return initialData;
   }
