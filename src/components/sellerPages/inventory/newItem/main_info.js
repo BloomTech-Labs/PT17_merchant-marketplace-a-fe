@@ -44,7 +44,7 @@ function NewItem({ setProgress, slider, setData }) {
           <Input.TextArea placeholder="Short Description (Max 140 Characters)" />
         </Form.Item>
         {/*==============Price In Cents================ */}
-        <Form.Item name="price_in_cents" label="Price in cents: ">
+        <Form.Item name="price_in_cents" label="Price in cents: " required>
           <InputNumber
             placeholder="Price per item"
             min={1}
@@ -53,7 +53,11 @@ function NewItem({ setProgress, slider, setData }) {
           />
         </Form.Item>
         {/*================Quantity Available=============== */}
-        <Form.Item name="quantity_available" label="Quantity available: ">
+        <Form.Item
+          name="quantity_available"
+          label="Quantity available: "
+          required
+        >
           <InputNumber
             placeholder="quantity_available"
             min={0}

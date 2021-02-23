@@ -54,6 +54,10 @@ export const EDIT_MY_INFO_START = 'EDIT_MY_INFO_START';
 export const EDIT_MY_INFO_SUCCESS = 'EDIT_MY_INFO_SUCCESS';
 export const EDIT_MY_INFO_ERROR = 'EDIT_MY_INFO_ERROR';
 
+export const EDIT_PRODUCT_START = 'EDIT_PRODUCT_START';
+export const EDIT_PRODUCT_SUCCESS = 'EDIT_PRODUCT_SUCCESS';
+export const EDIT_PRODUCT_ERROR = 'EDIT_PRODUCT_ERROR';
+
 export const DELETE_PRODUCT_START = 'DELETE_PRODUCT_START';
 export const DELETE_PRODUCT_SUCCESS = 'DELETE_PRODUCT_SUCCESS';
 export const DELETE_PRODUCT_ERROR = 'DELETE_PRODUCT_ERROR';
@@ -239,7 +243,8 @@ export const fetchMyInfo = authState => dispatch => {
       dispatch({ type: FETCH_MY_INFO_ERROR, payload: err });
     });
 };
-
+//=================EDIT====================
+//<------------editMyInfo--------------->
 export const editMyInfo = (authState, editedInfo) => async dispatch => {
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
   let oktaId = oktaStore.idToken.claims.sub;
@@ -252,5 +257,20 @@ export const editMyInfo = (authState, editedInfo) => async dispatch => {
     })
     .catch(err => {
       dispatch({ type: EDIT_MY_INFO_ERROR, payload: err });
+    });
+};
+//<------------editProduct--------------->
+export const editProduct = (editedProduct, authState) => dispatch => {
+  dispatch({ type: EDIT_PRODUCT_START });
+  putData(
+    process.env.REACT_APP_API_URI + `item/${editedProduct.id}`,
+    editedProduct,
+    authState
+  )
+    .then(response => {
+      dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: response });
+    })
+    .catch(err => {
+      dispatch({ type: EDIT_PRODUCT_ERROR, payload: err });
     });
 };

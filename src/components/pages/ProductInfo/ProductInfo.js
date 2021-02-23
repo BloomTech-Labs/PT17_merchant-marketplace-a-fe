@@ -10,7 +10,8 @@ import {
 } from '@ant-design/icons';
 import { deleteProduct } from '../../../state/actions';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import UpdateProduct from './UpdateProduct';
 
 const ProductInfo = ({ item }) => {
   const [img, setImg] = useState('');
@@ -18,6 +19,11 @@ const ProductInfo = ({ item }) => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const { authState } = useOktaAuth();
+  const [updateToggle, setUpdateToggle] = useState(false);
+  const editProductState = useSelector(
+    state => state.editProduct.editedProduct
+  );
+  const [updatedProduct, setUpdatedProduct] = useState({});
   const history = useHistory();
   const dispatch = useDispatch();
   let oktaStore = JSON.parse(localStorage['okta-token-storage']);
@@ -63,76 +69,126 @@ const ProductInfo = ({ item }) => {
     getElement(item.id, 'tag/item/', setTags, 'Tag get fail in ItemCard');
   }, []);
 
+  //-------------Edit Item---------------
+  const getItem = id => {
+    getDSData(`${process.env.REACT_APP_API_URI}item/${id}`, authState)
+      .then(res => setUpdatedProduct(res[0]))
+      .catch(err => {
+        console.log('Edit Product fail in ItemCard');
+      });
+  };
+
+  useEffect(() => {
+    getItem(item.id);
+  }, [editProductState]);
+
+  const toggle = () => {
+    setUpdateToggle(!updateToggle);
+  };
+  const cancelEdit = () => {
+    history.push('/myprofile/inventory');
+  };
+
   let dollars = item.price_in_cents / 100;
   return (
     <div className="product-page">
-      {item.published ? (
-        <div className="published-container">
-          <CheckCircleOutlined style={{ fontSize: '32px', color: 'green' }} />
-          <span className="published">published</span>
-        </div>
+      {updateToggle ? (
+        <UpdateProduct
+          item={updatedProduct}
+          toggle={toggle}
+          setUpdateToggle={setUpdateToggle}
+          updateToggle={updateToggle}
+          id={updatedProduct.id}
+        />
       ) : (
-        <div className="published-container">
-          <MinusCircleOutlined style={{ fontSize: '32px', color: 'red' }} />
-          <span className="published">unpublished</span>
+        <div>
+          <div>
+            {updatedProduct.published ? (
+              <div className="published-container">
+                <CheckCircleOutlined
+                  style={{ fontSize: '32px', color: 'green' }}
+                />
+                <span className="published">published</span>
+              </div>
+            ) : (
+              <div className="published-container">
+                <MinusCircleOutlined
+                  style={{ fontSize: '32px', color: 'red' }}
+                />
+                <span className="published">unpublished</span>
+              </div>
+            )}
+          </div>
+
+          <div className="product-container">
+            <div>
+              <img src={img} />
+            </div>
+
+            <div className="item">
+              <div className="name-price">
+                <p>{updatedProduct.item_name}</p>
+                <p>${dollars}</p>
+              </div>
+              <div className="rating">
+                <Rate />
+              </div>
+              <div className="store-name">
+                <Avatar size="small" icon={<GlobalOutlined />} />
+                <h3>Store: {sellerProfile.seller_name}</h3>
+              </div>
+              <p>Location: {sellerProfile.physical_address}</p>
+              <section>
+                <p>{updatedProduct.description}</p>
+                {updatedProduct.quantity_available !== 0 ? (
+                  <h2 style={{ color: 'green' }}>
+                    QTY: {updatedProduct.quantity_available}
+                  </h2>
+                ) : (
+                  <h2 style={{ color: 'red' }}>
+                    QTY: {updatedProduct.quantity_available}
+                  </h2>
+                )}
+              </section>
+
+              <div
+                className="category-tag "
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                }}
+              >
+                <h3 className="catH3">Categories: </h3>
+                {categories.map(category => (
+                  <div className="cats" key={category.id}>
+                    {category.category_name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <section className="tags-container" style={{ paddingLeft: '12rem' }}>
+            {tags.map(tag => (
+              <Tag className="tags" style={{ width: 'auto' }} key={tag.id}>
+                {tag.tag_name}
+              </Tag>
+            ))}
+          </section>
+          <Button onClick={delProduct} className="deleteBtn">
+            Delete Item
+          </Button>
+          <Button
+            type="primary"
+            onClick={toggle}
+            style={{ marginLeft: '2rem' }}
+          >
+            Edit Item
+          </Button>
+          <Button onClick={cancelEdit} style={{ marginLeft: '2rem' }}>
+            Back to Inventory
+          </Button>
         </div>
       )}
-
-      <div className="product-container">
-        <div>
-          {/* <ProductCarousel /> */}
-          {/* {The carrousel avobe can be implemented later} */}
-          <img src={img} />
-        </div>
-
-        <div className="item">
-          <div className="name-price">
-            <p>{item.item_name}</p>
-            <p>${dollars}</p>
-          </div>
-          <div className="rating">
-            <Rate />
-          </div>
-          <div className="store-name">
-            <Avatar size="small" icon={<GlobalOutlined />} />
-            <h3>Store: {sellerProfile.seller_name}</h3>
-          </div>
-          <p>Location: {sellerProfile.physical_address}</p>
-          <section>
-            <p>{item.description}</p>
-            {item.quantity_available !== 0 ? (
-              <h2 style={{ color: 'green' }}>QTY: {item.quantity_available}</h2>
-            ) : (
-              <h2 style={{ color: 'red' }}>QTY: {item.quantity_available}</h2>
-            )}
-          </section>
-
-          <div
-            className="category-tag "
-            style={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-            }}
-          >
-            <h3 className="catH3">Categories: </h3>
-            {categories.map(category => (
-              <div className="cats" key={category.id}>
-                {category.category_name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <section className="tags-container" style={{ paddingLeft: '12rem' }}>
-        {tags.map(tag => (
-          <Tag className="tags" style={{ width: 'auto' }} key={tag.id}>
-            {tag.tag_name}
-          </Tag>
-        ))}
-      </section>
-      <Button onClick={delProduct} className="deleteBtn">
-        Delete Item
-      </Button>
     </div>
   );
 };
