@@ -23,7 +23,8 @@ import Landing from './components/pages/Landing/Landing';
 // Seller Imports
 import SellerProfile from './components/sellerPages/profile';
 import Inventory from './components/sellerPages/inventory';
-import MyInfo from './components/sellerPages/profile/dashboard/myInfoSection';
+import MyInfo from './components/sellerPages/profile/dashboard/myInfoSection/index.js';
+import EditInfo from './components/sellerPages/profile/dashboard/edit/EditInfo.js';
 import CurrentInventory from './components/sellerPages/inventory/current';
 import { ProductPage } from './components/pages/ProductPage';
 import { TestItemImageUpload } from './components/common';
@@ -71,6 +72,7 @@ function App() {
           component={Inventory}
         />
         <SecureRoute exact path="/myprofile/myinfo" component={MyInfo} />
+        <SecureRoute exact path="/myprofile/editinfo" component={EditInfo} />
         <SecureRoute
           exact
           path="/myprofile/inventory/productpage/:id"

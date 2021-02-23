@@ -31,12 +31,12 @@ const UpdateProduct = props => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         initialValues={{
-          ['item_name']: props.item.item_name,
-          ['description']: props.item.description,
-          ['price_in_cents']: props.item.price_in_cents,
-          ['quantity_available']: props.item.quantity_available,
-          ['published']: props.item.published,
-          ['id']: props.item.id,
+          item_name: props.item.item_name,
+          description: props.item.description,
+          price_in_cents: props.item.price_in_cents,
+          quantity_available: props.item.quantity_available,
+          published: props.item.published,
+          id: props.item.id,
         }}
       >
         {/*======================item_name========================== */}

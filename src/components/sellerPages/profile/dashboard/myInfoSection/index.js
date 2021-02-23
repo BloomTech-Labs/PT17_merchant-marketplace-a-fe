@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import NavBar from '../../../../common/navBar';
 import { connect } from 'react-redux';
 import { fetchMyInfo, editMyInfo } from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 
 function MyInfo(props) {
+  const history = useHistory();
   const { authState } = useOktaAuth();
-
-  const editedState = {
-    id: '00ultwew80Onb2vOT4x6',
-    seller_name: 'edited',
-    email_address: 'llama002@maildrop.cc',
-    phone_number: 'edited',
-    physical_address: 'edited',
-    description: 'edited',
-  };
 
   useEffect(() => {
     props.fetchMyInfo(authState);
-  });
+  }, []);
 
   function clicked(event) {
-    props.editMyInfo(authState, editedState);
+    history.push('/myprofile/editinfo');
   }
 
   return (
@@ -45,6 +38,7 @@ function MyInfo(props) {
 const mapStateToProps = state => {
   return {
     myInfo: state.information.myInfo,
+    loading: state.information.fetchMyInfoStatus,
   };
 };
 

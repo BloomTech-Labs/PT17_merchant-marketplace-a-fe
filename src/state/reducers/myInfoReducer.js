@@ -7,11 +7,11 @@ import {
 
 const initialState = {
   myInfo: {
-    seller_name: '',
-    physical_address: '',
-    phone_number: '',
-    email_address: '',
-    description: '',
+    seller_name: 'Loading...',
+    physical_address: 'Loading...',
+    phone_number: 'Loading...',
+    email_address: 'Loading...',
+    description: 'Loading...',
   },
   fetchMyInfoStatus: requestStatus.ready,
 };
