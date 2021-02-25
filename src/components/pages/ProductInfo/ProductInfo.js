@@ -89,7 +89,7 @@ const ProductInfo = ({ item }) => {
     history.push('/myprofile/inventory');
   };
 
-  let dollars = item.price_in_cents / 100;
+  let dollars = updatedProduct.price_in_cents / 100;
   return (
     <div className="product-page">
       {updateToggle ? (
