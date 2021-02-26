@@ -11,9 +11,6 @@ function SearchBar({ searchVisible, setData }) {
   function onSearch(values) {
     setData(values);
   }
-  function onChange(e) {
-    setData(e.target.value);
-  }
 
   function publishedChange() {
     setData('$#&published');
@@ -53,7 +50,7 @@ function SearchBar({ searchVisible, setData }) {
           placeholder="Search through your inventory"
           className="searchBar"
           onSearch={onSearch}
-          onChange={onChange}
+          onChange={e => onSearch(e.target.value)}
           name="searchItem"
           initialValue=""
         />
