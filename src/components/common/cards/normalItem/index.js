@@ -2,7 +2,7 @@ import { useOktaAuth } from '@okta/okta-react';
 import React, { useEffect, useState } from 'react';
 import { getDSData } from '../../../../api';
 import './itemCardStyles.css';
-import { Tag } from 'antd';
+import { Tag, Skeleton } from 'antd';
 import { MinusCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 function ItemCard({ name, description, price, image, count, published }) {
@@ -10,6 +10,7 @@ function ItemCard({ name, description, price, image, count, published }) {
   const { authState } = useOktaAuth();
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [loading, setLoading] = useState(false);
   let dollars = price / 100;
 
   //<----------------Get Element---------------->
@@ -22,8 +23,12 @@ function ItemCard({ name, description, price, image, count, published }) {
   };
   //<----------------Get Image---------------->
   const imgGet = id => {
+    setLoading(true);
     getDSData(`${process.env.REACT_APP_API_URI}photo/${id}`, authState)
-      .then(res => setImg(res[0]['url']))
+      .then(res => {
+        setLoading(false);
+        setImg(res[0]['url']);
+      })
       .catch(err => {
         console.log('Img get fail in ItemCard');
       });
@@ -41,7 +46,12 @@ function ItemCard({ name, description, price, image, count, published }) {
 
   return (
     <div className="cardContainer">
-      <img src={img} className="cardImage" />
+      {loading ? (
+        <Skeleton.Image active className="cardImage" />
+      ) : (
+        <img src={img} className="cardImage" alt="product for sell" />
+      )}
+
       <div className="cardDesc">
         <h2 className="descText">{name}</h2>
         <p className="descText" activeStyle={{ color: 'black' }}>

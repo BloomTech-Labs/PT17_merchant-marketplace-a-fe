@@ -33,8 +33,7 @@ function CurrentInventory({
   }, []);
 
   const displayedData = useSearch(inventory, 'item_name', searchData);
-  console.log('inventory', inventory);
-  console.log('Redux state: ', state);
+
   return (
     <>
       <NavBar searchVisible={false} setData={setSearchData} />
