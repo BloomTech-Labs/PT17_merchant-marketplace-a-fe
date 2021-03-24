@@ -17,7 +17,7 @@
     margin-top: 5%;
 }
 .title-2 {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 .top-img {
         height: 200px;
@@ -31,18 +31,21 @@
     background-color: powderblue;
 }
 
-.browse {
-    display: flex;
-    flex-direction: column;
+
+.tittle_img{
+    width: 1000px;
+    height: 350px;
+    display:flex;
     justify-content: center;
-    height: 300px;
+    margin-left: 17%;
+    margin-top: 5%;
+    
+
 }
 
-.browse-bar {
-    display: flex;
-    justify-content: center;
+.container{
+    width: auto;
 }
-
 
 @media only screen and (max-width: 600px) {
     .top-rated {
