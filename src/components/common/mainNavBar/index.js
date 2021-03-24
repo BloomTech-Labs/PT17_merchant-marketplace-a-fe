@@ -4,7 +4,8 @@ import { Badge } from 'antd';
 import { Button } from '../../common';
 import './mainNavBar.css';
 import { useOktaAuth } from '@okta/okta-react';
-
+import BrowserBar from '../../common/browserBar';
+import logo from '../mainNavBar/marketplace-logo.png';
 function MainNavBar() {
   const { authState, authService } = useOktaAuth();
 
@@ -12,7 +13,11 @@ function MainNavBar() {
     <div className="nav-bar">
       {/* logo */}
       <div className="logo">
-        <span>MERCHANT</span> MARKETPLACE
+        <img src={logo}></img>
+      </div>
+      <div className="browse-bar">
+        {''}
+        <BrowserBar />
       </div>
       <div className="menu">
         {authState.isAuthenticated && (
