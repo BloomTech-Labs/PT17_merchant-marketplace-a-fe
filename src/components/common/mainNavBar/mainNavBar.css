@@ -2,22 +2,49 @@
 
     display: flex;
     justify-content: space-between;
-    background-color: rgba(69, 49, 179, 0.795);
+    background-color: rgb(44, 140, 172);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 4;
-    padding: 20px;
+    color:white;
     padding-bottom: 10px;
 }
-
-.logo{
-   height: 25px;
-   width: 25px;			
+.tittle{
+    display: flex;
+    
+    font-weight: 30px;
+    font-size: large;
+   
     
 }
+.logo_1{
+   height: 50px;
+   width: 50px;	
+   margin-right: 8%;		
+}
+
 .browse-bar {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width:100%;
+    padding-top: 20px;
+    
+}
+.menu{
+    width: 400px;
+    padding-top: 25px;
+    color:grey; 
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+}
+.link {
+   
+   text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: large; 
+    margin-right: 8%;
 }
