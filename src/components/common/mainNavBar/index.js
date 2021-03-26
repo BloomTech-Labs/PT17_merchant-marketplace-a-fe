@@ -12,8 +12,9 @@ function MainNavBar() {
   return (
     <div className="nav-bar">
       {/* logo */}
-      <div className="logo">
-        <img src={logo}></img>
+      <div className="tittle">
+        <img className="logo_1" src={logo}></img>
+        <div>MERCHANT MARKET PLACE</div>
       </div>
       <div className="browse-bar">
         {''}
@@ -26,17 +27,17 @@ function MainNavBar() {
             activeStyle={{ color: 'white' }}
             to="/myprofile"
           >
-            My Profile
+            MY PROFILE
           </NavLink>
         )}
         {authState.isAuthenticated && (
           <Button
             handleClick={() => authService.logout()}
-            buttonText="Logout"
+            buttonText="LOGOUT"
           />
         )}
         {!authState.isAuthenticated && (
-          <Button handleClick={() => authService.login()} buttonText="Login" />
+          <Button handleClick={() => authService.login()} buttonText="LOGIN" />
         )}
       </div>
     </div>
