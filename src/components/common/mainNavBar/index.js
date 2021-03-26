@@ -32,7 +32,7 @@ function MainNavBar() {
             activeStyle={{ color: 'white' }}
             to="/myprofile"
           >
-            My Profile
+            My Account
           </NavLink>
         )}
         {authState.isAuthenticated && (

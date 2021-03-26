@@ -31,7 +31,8 @@ function NavBar({ searchVisible, data, setData }) {
         <Link to="/myprofile/inventory">Inventory</Link>
         <Link>Orders</Link>
         <Link>Payment</Link>
-        <Link to="/myprofile/myinfo">My Info</Link>
+        <Link to="/myprofile/myinfo">Personal Information</Link>
+        <Link to="/myprofile">Dashboard</Link>
         <Link>Messages</Link>
       </div>
       <SearchBar searchVisible={searchVisible} setData={setData} data={data} />

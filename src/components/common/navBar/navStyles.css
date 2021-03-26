@@ -6,11 +6,13 @@
     top: 0;
     z-index: 4;
     align-items: center;
+    
 }
 .nav{
     display: flex;
     align-items: center;
     width: 100%;
+    
 }
 
 .logo{
@@ -18,7 +20,7 @@
     height: 50px;
     background-color: white;
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    margin-left: 10%;
+    margin-left: 5%;
     padding-left: 40px;
     font-weight: 400;
     color: black;
@@ -30,7 +32,7 @@
 }
 .nav > a{
     color: white;
-    margin-left: 15px;
+    margin-left: 70px;
 }
 .nav > a:hover{
     font-weight: bold;
