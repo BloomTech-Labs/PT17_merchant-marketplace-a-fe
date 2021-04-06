@@ -39,12 +39,12 @@ function SearchBar({ searchVisible, setData }) {
   return (
     <div className={inView}>
       <div className="searchOuter">
-        <div className="searchBtns">
+        {/* <div className="searchBtns">
           <Button onClick={mainChange}>Main</Button>
           <Button onClick={publishedChange}>Published</Button>
           <Button onClick={unPublishedChange}>Drafts</Button>
           <Button>Archives</Button>
-        </div>
+        </div> */}
         <div className="searchBtns"></div>
         <Search
           placeholder="Search through your inventory"

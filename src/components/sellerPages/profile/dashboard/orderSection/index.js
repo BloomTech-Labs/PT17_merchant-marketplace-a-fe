@@ -5,26 +5,34 @@ import OrderCard from '../../../../common/cards/orderCard';
 function OrderSection() {
   return (
     <>
-      <h2>Orders</h2>
-      <h4>Active</h4>
-      <OrderCard
+      <h2>Revenue</h2>
+      <h4>$250.00</h4>
+      <h9>+32% since last month</h9>
+      {/* <OrderCard
         orderNumber="#1"
         name="Name McName"
         status="Pick-Up"
         price={3.33}
         itemCount={9}
-      />
-      <Link className="activeLink">
-        <p className="activeLink">All Active Orders</p>
+      /> */}
+      <Link path to="/orders">
+        {/* <Link className="activeLink"> */}
+        <button
+          className="activeLink"
+          type="button"
+          class="btn btn-primary float-right"
+        >
+          View Orders
+        </button>
       </Link>
-      <h4>Fullfiled & cancelled</h4>
-      <OrderCard
+      {/* <h4>Fullfiled & cancelled</h4> */}
+      {/* <OrderCard
         orderNumber="#0"
         name="Name McName"
         status="Pick-Up"
         price={3.33}
         itemCount={9}
-      />
+      /> */}
     </>
   );
 }

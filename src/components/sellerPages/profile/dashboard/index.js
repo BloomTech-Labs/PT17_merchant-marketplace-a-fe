@@ -3,6 +3,7 @@ import './dashboard.css';
 import InvSection from './invSection';
 import OrderSection from './orderSection';
 import CustomerSection from './customerSection';
+import Charts from '../charts/MyChart';
 import {
   Jumbotron,
   Container,
@@ -19,9 +20,13 @@ import {
 
 function Dashboard() {
   return (
-    <div>
+    <div className="whole_page">
+      <br></br>
+      <br></br>
       <div>
-        <h1 className="seller_dashboard">Seller Dashboard</h1>
+        <h1 className="seller_dashboard" style={{ color: 'black' }}>
+          Hello Seller!
+        </h1>
       </div>
 
       <div className="dashboard">
@@ -34,6 +39,9 @@ function Dashboard() {
         <div className="dashItem">
           <CustomerSection />
         </div>
+        {/* <div className="dashItem">
+          <Charts/>
+        </div> */}
       </div>
     </div>
   );
