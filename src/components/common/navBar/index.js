@@ -62,9 +62,9 @@ function NavBar({ searchVisible, data, setData }) {
               <Menu.Item key="9">
                 View <Link path to="/myprofile/myinfo"></Link>
               </Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
+              {/* <Menu.Item key="10">option10</Menu.Item>
               <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
+              <Menu.Item key="12">option12</Menu.Item> */}
             </SubMenu>
           </Menu>
         </Sider>
