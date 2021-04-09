@@ -4,6 +4,7 @@ import NavBar from '../../../../common/navBar';
 import { connect } from 'react-redux';
 import { fetchMyInfo, editMyInfo } from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
+import { Menu, Dropdown, Button, Space, Badge, Breadcrumb, Layout } from 'antd';
 
 function MyInfo(props) {
   const history = useHistory();
@@ -19,6 +20,18 @@ function MyInfo(props) {
 
   return (
     <>
+      <Layout
+        style={{
+          padding: '0 24px 24px',
+          color: 'white',
+          background: 'rgb(44, 140, 172)',
+        }}
+      >
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
+        </Breadcrumb>
+      </Layout>
       <div>
         <img
           class="profile-pic"
@@ -27,7 +40,7 @@ function MyInfo(props) {
         <div class="upload-button">Upload Image</div>
         <input class="file-upload" type="file" accept="image/*" />
       </div>
-      <NavBar />
+      {/* <NavBar /> */}
       <br />
       <br />
       <div>

@@ -1,48 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import InvSection from './invSection';
 import OrderSection from './orderSection';
 import CustomerSection from './customerSection';
-import Charts from '../charts/MyChart';
-import {
-  Jumbotron,
-  Container,
-  Navbar,
-  NavbarBrand,
-  NavItem,
-  NavLink,
-  NavbarText,
-  Nav,
-  Button,
-  CardImg,
-  Card,
-} from 'reactstrap';
-
+//import Charts from '../charts/MyChart';
+import { Card, Col, Row } from 'antd';
 function Dashboard() {
   return (
-    <div className="whole_page">
-      <br></br>
-      <br></br>
-      <div>
-        <h1 className="seller_dashboard" style={{ color: 'black' }}>
-          Hello Seller!
-        </h1>
-      </div>
-
-      <div className="dashboard">
-        <div className="dashItem">
-          <InvSection />
-        </div>
-        <div className="dashItem">
-          <OrderSection />
-        </div>
-        <div className="dashItem">
-          <CustomerSection />
-        </div>
-        {/* <div className="dashItem">
-          <Charts/>
-        </div> */}
-      </div>
+    <div style={{ background: '#ECECEC', padding: '30px' }}>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Card title="Payments" bordered={false}>
+            {' '}
+            <InvSection />
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card title="Revenue" bordered={false}>
+            {' '}
+            <OrderSection />
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card title="Messages" bordered={false}>
+            <CustomerSection />
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }

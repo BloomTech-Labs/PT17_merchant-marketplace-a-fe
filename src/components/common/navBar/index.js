@@ -22,14 +22,13 @@ function NavBar({ searchVisible, data, setData }) {
   // const { authState, authService } = useOktaAuth();
   return (
     <Layout>
-      <Header className="header">
-        <div className="logo" />
-        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1">Inventory</Menu.Item>
-        <Menu.Item key="2">Orders</Menu.Item>
-        <Menu.Item key="3">Payments</Menu.Item>
-        <Menu.Item key="3">Personal Information</Menu.Item>
-      </Menu> */}
+      <Header className="header" style={{ background: 'rgb(44, 140, 172)' }}>
+        <div className="logo">
+          {/* <div className="tittle">
+        <img className="logo_1" src={logo}></img>
+        <div className="project-tittle">MERCHANT MARKETPLACE</div>
+      </div> */}
+        </div>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
@@ -39,44 +38,41 @@ function NavBar({ searchVisible, data, setData }) {
             defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
           >
-            <SubMenu key="sub1" icon={<UserOutlined />} title="Inventory">
-              <Menu.Item key="1">Main</Menu.Item>
-              <Menu.Item key="2">Published</Menu.Item>
+            <SubMenu
+              key="sub1"
+              icon={<UserOutlined />}
+              title="Inventory"
+              style={{ color: 'rgb(44, 140, 172)' }}
+            >
+              <Menu.Item key="1">
+                Main <Link path to="/myprofile/inventory"></Link>
+              </Menu.Item>
+
+              <Menu.Item key="2">Published </Menu.Item>
               <Menu.Item key="3">Drafts</Menu.Item>
               <Menu.Item key="4">Archives</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<LaptopOutlined />} title="Orders">
-              <Menu.Item key="5">option5</Menu.Item>
-              <Menu.Item key="6">option6</Menu.Item>
-              <Menu.Item key="7">option7</Menu.Item>
-              <Menu.Item key="8">option8</Menu.Item>
-            </SubMenu>
+
             <SubMenu
-              key="sub3"
-              icon={<NotificationOutlined />}
-              title="Payments"
-            >
-              <Menu.Item key="9">option9</Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
-            </SubMenu>
-            <SubMenu
+              style={{ color: 'rgb(44, 140, 172)' }}
               key="sub3"
               icon={<NotificationOutlined />}
               title="Personal Information"
             >
-              <Menu.Item key="9">option9</Menu.Item>
+              <Menu.Item key="9">
+                View <Link path to="/myprofile/myinfo"></Link>
+              </Menu.Item>
               <Menu.Item key="10">option10</Menu.Item>
               <Menu.Item key="11">option11</Menu.Item>
               <Menu.Item key="12">option12</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
+        <Layout style={{ padding: '0 24px 24px', color: 'white' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+            <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
+
             {/* <Breadcrumb.Item>App</Breadcrumb.Item> */}
           </Breadcrumb>
           <Content
@@ -84,7 +80,7 @@ function NavBar({ searchVisible, data, setData }) {
             style={{
               padding: 24,
               margin: 0,
-              minHeight: 280,
+              minHeight: 300,
             }}
           >
             <Dashboard />

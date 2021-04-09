@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 function InvSection() {
   return (
     <>
-      <h2>Payments</h2>
       <h4>$9,000</h4>
       {/* <SmallItemCard headerText="Option Text" descText="Subtext" /> */}
       <Link path to="/payments">

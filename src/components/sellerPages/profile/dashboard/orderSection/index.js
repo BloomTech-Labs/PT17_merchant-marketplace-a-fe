@@ -5,7 +5,6 @@ import OrderCard from '../../../../common/cards/orderCard';
 function OrderSection() {
   return (
     <>
-      <h2>Revenue</h2>
       <h4>$250.00</h4>
       <h9>+32% since last month</h9>
       {/* <OrderCard
