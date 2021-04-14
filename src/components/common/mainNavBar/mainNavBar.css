@@ -2,7 +2,7 @@
 
     display: flex;
     justify-content: space-between;
-    background-color: rgb(44, 140, 172);
+    background-color: #f0e0d1;
     position: fixed;
     width: 100%;
     top: 0;
@@ -10,7 +10,7 @@
     color:white;
     padding-bottom: 10px;
 }
-.tittle{
+.title{
     display: flex;
     
     font-weight: 30px;
@@ -18,10 +18,10 @@
    
     
 }
-.logo_1{
-   height: 50px;
-   width: 50px;	
-   margin-right: 8%;		
+.nav-bar .logo_1{
+    width: 300px;
+    height: 100%;
+   margin-left: 8%;		
 }
 
 .browse-bar {
@@ -31,20 +31,36 @@
     padding-top: 20px;
     
 }
-.menu{
-    width: 400px;
+.search{
+    display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 5%;
+  font-size: 1.2rem;
+  margin-right: 1%;
+    color: #515151;
+    padding-top: 19px;
+
+}
+.search .search_icon{
+    margin-right: 2%;
+}
+.nav_links{
+    /* width: 400px; */
     padding-top: 25px;
     color:grey; 
     display: flex;
     justify-content: space-evenly;
-    
-    
+    margin:0 35px 0 7px;
 }
-.link {
-   
+
+.nav_links .nav_link {
    text-decoration: none;
-    color:white;
-    font-weight: bold;
-    font-size: large; 
-    margin-right: 8%;
+    color:black;
+    font-size: 1.2rem; 
+    margin-right: 10%;
+}
+.nav_links .nav_icon{
+    margin: 6%;
+    white-space: nowrap;
 }
