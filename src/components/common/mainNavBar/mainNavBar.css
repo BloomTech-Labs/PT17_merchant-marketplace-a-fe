@@ -8,7 +8,7 @@
     top: 0;
     z-index: 4;
     color:white;
-    padding-bottom: 10px;
+    padding:25px ;
 }
 .title{
     display: flex;
@@ -21,15 +21,20 @@
 .nav-bar .logo_1{
     width: 300px;
     height: 100%;
-   margin-left: 8%;		
+   margin-left: 15%;
+   padding-top: 4px;
 }
 
-.browse-bar {
+.navigation_links {
     display: flex;
     justify-content: center;
     width:100%;
-    padding-top: 20px;
+    padding-top: 25px;
     
+}
+.navigation_links .navigation_link{
+    margin: 0 3%;
+    color: #000000;
 }
 .search{
     display: flex;

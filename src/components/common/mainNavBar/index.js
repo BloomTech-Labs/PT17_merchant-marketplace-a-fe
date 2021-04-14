@@ -34,9 +34,19 @@ function MainNavBar() {
       <div className="title">
         <img className="logo_1" src={logo}></img>
       </div>
-      <div className="browse-bar">
-        {''}
-        <BrowserBar />
+      <div className="navigation_links">
+        <Link to="/" className="navigation_link">
+          Home
+        </Link>
+        <Link to="/" className="navigation_link">
+          Browse
+        </Link>
+        <Link to="/" className="navigation_link">
+          Shops
+        </Link>
+        <Link to="/" className="navigation_link">
+          Contact Us
+        </Link>
       </div>
       <div className="search">
         <SearchOutlined
@@ -54,29 +64,17 @@ function MainNavBar() {
       </div>
       <div className="nav_links">
         {authState.isAuthenticated && (
-          <NavLink
-            className="nav_link"
-            activeStyle={{ color: 'white' }}
-            to="/myprofile"
-          >
+          <NavLink className="nav_link" to="/myprofile">
             <UserOutlined className="nav_icon stay" />
           </NavLink>
         )}
         {authState.isAuthenticated && (
-          <NavLink
-            className="nav_link"
-            activeStyle={{ color: 'white' }}
-            to="/myprofile"
-          >
+          <NavLink className="nav_link" to="/">
             <HeartFilled className="nav_icon stay" />
           </NavLink>
         )}
         {authState.isAuthenticated && (
-          <NavLink
-            className="nav_link"
-            activeStyle={{ color: 'white' }}
-            to="/myprofile"
-          >
+          <NavLink className="nav_link" to="/">
             <IconFont type="icon-shoppingcart" className="nav_icon stay" />
           </NavLink>
         )}
