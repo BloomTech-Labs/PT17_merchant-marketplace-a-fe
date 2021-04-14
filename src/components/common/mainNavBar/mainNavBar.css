@@ -45,15 +45,18 @@
   margin-right: 1%;
     color: #515151;
     padding-top: 19px;
-
+}
+.search input{
+    background-color: #cec0b4;
 }
 .search .search_icon{
     margin-right: 2%;
+    color: black;
 }
 .nav_links{
     /* width: 400px; */
     padding-top: 25px;
-    color:grey; 
+    color:black; 
     display: flex;
     justify-content: space-evenly;
     margin:0 100px 0 7px;
@@ -66,6 +69,14 @@
     margin-right: 10%;
 }
 .nav_links .nav_icon{
-    margin: 6%;
     white-space: nowrap;
+}
+.ant-btn{
+    background-color: transparent;
+    border-color: #515151;
+}
+.ant-btn:hover, .ant-btn:focus{
+    color:black;
+    background-color: transparent;
+    border-color: #515151;
 }

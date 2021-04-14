@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Badge } from 'antd';
+import { Button } from 'antd';
 import {
   SearchOutlined,
   HeartFilled,
   createFromIconfontCN,
   UserOutlined,
 } from '@ant-design/icons';
-import { Button } from '../../common';
 import './mainNavBar.css';
 import { useOktaAuth } from '@okta/okta-react';
-import BrowserBar from '../../common/browserBar';
 import logo from '../mainNavBar/Merchant.png';
 import { SearchInput } from './Style';
 
@@ -80,13 +78,14 @@ function MainNavBar() {
         )}
         {authState.isAuthenticated && (
           <Button
-            className="nav_icon"
-            handleClick={() => authService.logout()}
-            buttonText="LOGOUT"
-          />
+            className="nav_icon button"
+            onClick={() => authService.logout()}
+          >
+            Logout
+          </Button>
         )}
         {!authState.isAuthenticated && (
-          <Button handleClick={() => authService.login()} buttonText="LOGIN" />
+          <Button onClick={() => authService.login()}>Login</Button>
         )}
       </div>
     </div>
