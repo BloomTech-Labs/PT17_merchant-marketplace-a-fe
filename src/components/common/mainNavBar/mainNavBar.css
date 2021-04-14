@@ -51,7 +51,7 @@
     color:grey; 
     display: flex;
     justify-content: space-evenly;
-    margin:0 35px 0 7px;
+    margin:0 100px 0 7px;
 }
 
 .nav_links .nav_link {
