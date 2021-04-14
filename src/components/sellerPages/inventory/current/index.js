@@ -55,7 +55,7 @@ function CurrentInventory({
       {/* <NavBar searchVisible={false} setData={setSearchData} /> */}
       <div className="outerContainer">
         <div className="contents">
-          <Card>
+          <Card hoverable style={{ width: 540 }}>
             <SearchResults data={displayedData} filter={searchData} />
           </Card>
         </div>

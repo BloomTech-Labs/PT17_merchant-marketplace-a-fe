@@ -4,7 +4,19 @@ import NavBar from '../../../../common/navBar';
 import { connect } from 'react-redux';
 import { fetchMyInfo, editMyInfo } from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
-import { Menu, Dropdown, Button, Space, Badge, Breadcrumb, Layout } from 'antd';
+import {
+  Menu,
+  Dropdown,
+  Button,
+  Space,
+  Badge,
+  Breadcrumb,
+  Layout,
+  Avatar,
+  Descriptions,
+  Upload,
+} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 function MyInfo(props) {
   const history = useHistory();
@@ -33,23 +45,47 @@ function MyInfo(props) {
         </Breadcrumb>
       </Layout>
       <div>
-        <img
+        <Avatar size={64} icon={<UserOutlined />} />
+      </div>
+
+      <div>
+        {/* <img
           class="profile-pic"
           src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
-        />
-        <div class="upload-button">Upload Image</div>
+        /> */}
+        <div class="upload-button">Upload Profile Image</div>
         <input class="file-upload" type="file" accept="image/*" />
       </div>
       {/* <NavBar /> */}
       <br />
       <br />
-      <div>
+
+      <Descriptions title="My Info" layout="vertical">
+        <Descriptions.Item label="Name:">
+          {props.myInfo.seller_name}
+        </Descriptions.Item>
+        <Descriptions.Item label="Telephone">
+          {props.myInfo.phone_number}
+        </Descriptions.Item>
+        <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
+        <Descriptions.Item label="Email">
+          {props.myInfo.email_address}
+        </Descriptions.Item>
+        <Descriptions.Item label="Address" span={2}>
+          {props.myInfo.physical_address}
+        </Descriptions.Item>
+        <Descriptions.Item label="Description">
+          {props.myInfo.description}
+        </Descriptions.Item>
+      </Descriptions>
+
+      {/* <div>
         <h3>Name:{props.myInfo.seller_name}</h3>
         <h3>Address:{props.myInfo.physical_address}</h3>
         <h3>Phone Number:{props.myInfo.phone_number}</h3>
         <h3>Email:{props.myInfo.email_address}</h3>
         <h3>Description:{props.myInfo.description}</h3>
-      </div>
+      </div> */}
 
       <button onClick={clicked}>Edit</button>
     </>

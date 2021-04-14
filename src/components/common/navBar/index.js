@@ -16,7 +16,7 @@ import {
 import Dashboard from '../../sellerPages/profile/dashboard';
 
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 function NavBar({ searchVisible, data, setData }) {
   // const { authState, authService } = useOktaAuth();
@@ -86,6 +86,17 @@ function NavBar({ searchVisible, data, setData }) {
             <Dashboard />
           </Content>
         </Layout>
+      </Layout>
+      <Layout>
+        <Footer style={{ textAlign: 'center' }}>
+          ​
+          <div className="legal">
+            <p>
+              &copy;{new Date().getFullYear()} MERCHANT MARKETPLACE | All rights
+              reserved | Terms Of Service | Privacy
+            </p>
+          </div>
+        </Footer>
       </Layout>
     </Layout>
 
