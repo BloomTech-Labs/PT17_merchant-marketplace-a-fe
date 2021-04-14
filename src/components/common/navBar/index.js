@@ -42,7 +42,7 @@ function NavBar({ searchVisible, data, setData }) {
               key="sub1"
               icon={<UserOutlined />}
               title="Inventory"
-              style={{ color: 'rgb(44, 140, 172)' }}
+              style={{ color: 'black' }}
             >
               <Menu.Item key="1">
                 Main <Link path to="/myprofile/inventory"></Link>
@@ -54,7 +54,7 @@ function NavBar({ searchVisible, data, setData }) {
             </SubMenu>
 
             <SubMenu
-              style={{ color: 'rgb(44, 140, 172)' }}
+              style={{ color: 'black' }}
               key="sub3"
               icon={<NotificationOutlined />}
               title="Personal Information"
