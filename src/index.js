@@ -29,6 +29,7 @@ import EditInfo from './components/sellerPages/profile/dashboard/edit/EditInfo.j
 import CurrentInventory from './components/sellerPages/inventory/current';
 import { ProductPage } from './components/pages/ProductPage';
 import { TestItemImageUpload } from './components/common';
+import Orders from './components/pages/Orders/orders';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -87,6 +88,7 @@ function App() {
           path="/test_image_upload"
           component={TestItemImageUpload}
         />
+        <SecureRoute path="/myprofile/orders" component={Orders} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>

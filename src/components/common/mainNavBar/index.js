@@ -19,7 +19,6 @@ const IconFont = createFromIconfontCN({
   ],
 });
 
-
 function MainNavBar() {
   const { authState, authService } = useOktaAuth();
   const [searchActive, SetSearchActive] = useState(false);

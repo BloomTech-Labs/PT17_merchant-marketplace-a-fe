@@ -52,7 +52,7 @@ function SearchBar({ searchVisible, setData }) {
           onSearch={onSearch}
           onChange={e => onSearch(e.target.value)}
           name="searchItem"
-          initialValue=""
+          initialvalue=""
         />
         <div>
           <Select defaultValue="Sort By" onChange={sortChange}>

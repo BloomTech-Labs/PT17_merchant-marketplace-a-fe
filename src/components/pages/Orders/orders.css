@@ -1,0 +1,49 @@
+.order-container {
+    display: block;
+    box-sizing: border-box;
+    flex-direction: column;
+    max-width: 50%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    margin: 50px;
+    
+}
+
+h3 {
+    width: 100%
+}
+
+.order-item-container {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px
+}
+
+img {
+    max-width: 200px;
+    max-height: 100px;
+}
+
+.order-description {
+    max-width: 60%;
+    min-width: 50%;
+    min-height: 50%;
+    margin: auto;
+}
+
+.orders-page {
+    display: flex;
+    justify-content: center;
+}
+
+.order-heading {
+    background-color: #d3d3d3;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
