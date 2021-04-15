@@ -6,7 +6,7 @@ function SellerProfile() {
   return (
     <>
       <NavBar />
-      <Dashboard />
+      {/* <Dashboard /> */}
     </>
   );
 }
