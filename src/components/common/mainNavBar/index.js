@@ -1,37 +1,92 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Badge } from 'antd';
-import { Button } from '../../common';
+import { Button } from 'antd';
+import {
+  SearchOutlined,
+  HeartFilled,
+  createFromIconfontCN,
+  UserOutlined,
+} from '@ant-design/icons';
 import './mainNavBar.css';
 import { useOktaAuth } from '@okta/okta-react';
+import logo from '../mainNavBar/Merchant.png';
+import { SearchInput } from './Style';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const IconFont = createFromIconfontCN({
+  scriptUrl: [
+    '//at.alicdn.com/t/font_1788044_0dwu4guekcwr.js', //icon-shoppingcart
+  ],
+});
 
 function MainNavBar() {
   const { authState, authService } = useOktaAuth();
+  const [searchActive, SetSearchActive] = useState(false);
+  const [searchTerm, SetSearchTerm] = useState([]);
+
+  const search = e => {
+    e.preventDefault();
+  };
 
   return (
     <div className="nav-bar">
-      {/* logo */}
-      <div className="logo">
-        <span>MERCHANT</span> MARKETPLACE
+      <div className="title">
+        <img className="logo_1" src={logo}></img>
       </div>
-      <div className="menu">
+      <div className="navigation_links">
+        <Link to="/" className="navigation_link">
+          Home
+        </Link>
+        <Link to="/" className="navigation_link">
+          Browse
+        </Link>
+        <Link to="/" className="navigation_link">
+          Shops
+        </Link>
+        <Link to="/" className="navigation_link">
+          Contact Us
+        </Link>
+      </div>
+      <div className="search">
+        <SearchOutlined
+          className="search_icon"
+          onClick={() => SetSearchActive(searchActive => !searchActive)}
+        />
+        <SearchInput
+          className="searchInput"
+          value={searchTerm}
+          onChange={({ target }) => SetSearchTerm(target.value)}
+          placeholder="Search"
+          active={searchActive}
+          // onSubmit={search}
+        />
+      </div>
+      <div className="nav_links">
         {authState.isAuthenticated && (
-          <NavLink
-            className="link"
-            activeStyle={{ color: 'white' }}
-            to="/myprofile"
-          >
-            My Profile
+          <NavLink className="nav_link" to="/myprofile">
+            <UserOutlined className="nav_icon stay" />
+          </NavLink>
+        )}
+        {authState.isAuthenticated && (
+          <NavLink className="nav_link" to="/">
+            <HeartFilled className="nav_icon stay" />
+          </NavLink>
+        )}
+        {authState.isAuthenticated && (
+          <NavLink className="nav_link" to="/">
+            <IconFont type="icon-shoppingcart" className="nav_icon stay" />
           </NavLink>
         )}
         {authState.isAuthenticated && (
           <Button
-            handleClick={() => authService.logout()}
-            buttonText="Logout"
-          />
+            className="nav_icon button"
+            onClick={() => authService.logout()}
+          >
+            Logout
+          </Button>
         )}
         {!authState.isAuthenticated && (
-          <Button handleClick={() => authService.login()} buttonText="Login" />
+          <Button onClick={() => authService.login()}>Login</Button>
         )}
       </div>
     </div>

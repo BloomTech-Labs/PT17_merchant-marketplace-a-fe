@@ -21,6 +21,7 @@ import thunk from 'redux-thunk';
 import Landing from './components/pages/Landing/Landing';
 
 // Seller Imports
+import MainNavBar from './components/common/mainNavBar';
 import SellerProfile from './components/sellerPages/profile';
 import Inventory from './components/sellerPages/inventory';
 import MyInfo from './components/sellerPages/profile/dashboard/myInfoSection/index.js';
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
+      <MainNavBar />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
