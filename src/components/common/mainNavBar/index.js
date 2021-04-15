@@ -11,12 +11,14 @@ import './mainNavBar.css';
 import { useOktaAuth } from '@okta/okta-react';
 import logo from '../mainNavBar/Merchant.png';
 import { SearchInput } from './Style';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
     '//at.alicdn.com/t/font_1788044_0dwu4guekcwr.js', //icon-shoppingcart
   ],
 });
+
 
 function MainNavBar() {
   const { authState, authService } = useOktaAuth();

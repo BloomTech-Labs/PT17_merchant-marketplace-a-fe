@@ -1,6 +1,6 @@
 import { useOktaAuth } from '@okta/okta-react/src/OktaContext';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'antd';
+import { Breadcrumb, Button, Layout } from 'antd';
 import { connect } from 'react-redux';
 import {
   fetchProducts,
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import NavBar from '../../../common/navBar';
 import SearchResults from './searchResults';
 import useSearch from '../../../common/customHooks/useSearch';
+import { Card, Col, Row } from 'antd';
 
 function CurrentInventory({
   state,
@@ -36,13 +37,27 @@ function CurrentInventory({
 
   return (
     <>
-      <NavBar searchVisible={false} setData={setSearchData} />
+      <Layout
+        style={{
+          padding: '0 24px 24px',
+          color: 'white',
+          background: 'rgb(44, 140, 172)',
+        }}
+      >
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
+        </Breadcrumb>
+      </Layout>
+      <Link to="/myprofile/inventory/additem">
+        <Button>+Add Item</Button>
+      </Link>
+      {/* <NavBar searchVisible={false} setData={setSearchData} /> */}
       <div className="outerContainer">
         <div className="contents">
-          <SearchResults data={displayedData} filter={searchData} />
-          <Link to="/myprofile/inventory/additem">
-            <Button>+Add Item</Button>
-          </Link>
+          <Card hoverable style={{ width: 540 }}>
+            <SearchResults data={displayedData} filter={searchData} />
+          </Card>
         </div>
       </div>
     </>

@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import InvSection from './invSection';
 import OrderSection from './orderSection';
 import CustomerSection from './customerSection';
-
+//import Charts from '../charts/MyChart';
+import { Card, Col, Row } from 'antd';
 function Dashboard() {
   return (
-    <div className="dashboard">
-      <div className="dashItem">
-        <InvSection />
-      </div>
-      <div className="dashItem">
-        <OrderSection />
-      </div>
-      <div className="dashItem">
-        <CustomerSection />
-      </div>
+    <div style={{ background: '#ECECEC', padding: '30px' }}>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Card title="Payments" bordered={false}>
+            {' '}
+            <InvSection />
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card title="Revenue" bordered={false}>
+            {' '}
+            <OrderSection />
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card title="Messages" bordered={false}>
+            <CustomerSection />
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 }
