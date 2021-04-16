@@ -10,6 +10,8 @@ const search = async searchData => {
   return await axios.get(`${searchUrl}?title=${title}&zip=${zip}`)
 }
 */
+const ordersUrl = `${process.env.REACT_APP_API_URI}orders`;
+
 const sleep = time =>
   new Promise(resolve => {
     setTimeout(resolve, time);
@@ -56,18 +58,29 @@ const apiAuthGet = authHeader => {
   return axios.get(apiUrl, { headers: authHeader });
 };
 
+const apiAuthGetOrders = authHeader => {
+  return axios.get(ordersUrl, { headers: authHeader });
+};
+
 const apiAuthGetId = (authHeader, oktaId) => {
   return axios.get(`${apiUrl}/${oktaId}`, { headers: authHeader });
 };
 
-const getProfileData = authState => {
+const getProfileData = async authState => {
   try {
-    return apiAuthGet(getAuthHeader(authState)).then(response => response.data);
+    return (await apiAuthGet(getAuthHeader(authState))).data;
   } catch (error) {
-    return new Promise(() => {
-      console.log(error);
-      return [];
-    });
+    console.log(error);
+    return [];
+  }
+};
+
+const getOrdersData = async authState => {
+  try {
+    return await apiAuthGetOrders(getAuthHeader(authState));
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };
 
@@ -122,10 +135,13 @@ const deleteData = (url, authState) => {
 };
 
 export {
+  apiAuthGet,
   sleep,
+  getAuthHeader,
   getExampleData,
   getProfileData,
   getProfileIdData,
+  getOrdersData,
   getDSData,
   postData,
   putData,

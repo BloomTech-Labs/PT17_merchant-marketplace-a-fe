@@ -1,8 +1,11 @@
+.seller_dashboard{
+    margin: 5rem auto;
+}
 .dashboard{
     width: 80%;
     max-width: 1000px;
     height: 80%;
-    margin: 10rem auto;
+    margin: 5rem auto;
     display: flex;
     justify-content: space-between;
 }

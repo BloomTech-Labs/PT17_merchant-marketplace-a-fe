@@ -2,15 +2,15 @@
 
     display: flex;
     justify-content: space-between;
-    background-color: rgb(44, 140, 172);
+    background-color: #f0e0d1;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 4;
     color:white;
-    padding-bottom: 10px;
+    padding:25px ;
 }
-.tittle{
+.title{
     display: flex;
     
     font-weight: 30px;
@@ -18,33 +18,65 @@
    
     
 }
-.logo_1{
-   height: 50px;
-   width: 50px;	
-   margin-right: 8%;		
+.nav-bar .logo_1{
+    width: 300px;
+    height: 100%;
+   margin-left: 15%;
+   padding-top: 4px;
 }
 
-.browse-bar {
+.navigation_links {
     display: flex;
     justify-content: center;
     width:100%;
-    padding-top: 20px;
+    padding-top: 25px;
     
 }
-.menu{
-    width: 400px;
+.navigation_links .navigation_link{
+    margin: 0 3%;
+    color: #000000;
+}
+.search{
+    display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 5%;
+  font-size: 1.2rem;
+  margin-right: 1%;
+    color: #515151;
+    padding-top: 19px;
+}
+.search input{
+    background-color: #eedac9;
+}
+.search .search_icon{
+    margin-right: 2%;
+    color: black;
+}
+.nav_links{
+    /* width: 400px; */
     padding-top: 25px;
-    color:grey; 
+    color:black; 
     display: flex;
     justify-content: space-evenly;
-    
-    
+    margin:0 100px 0 7px;
 }
-.link {
-   
+
+.nav_links .nav_link {
    text-decoration: none;
-    color:white;
-    font-weight: bold;
-    font-size: large; 
-    margin-right: 8%;
+    color:black;
+    font-size: 1.2rem; 
+    margin-right: 10%;
+}
+.nav_links .nav_icon{
+    white-space: nowrap;
+}
+.ant-btn{
+    background-color: transparent;
+    border-color: #515151;
+}
+.ant-btn:hover, .ant-btn:focus{
+    color:black;
+    background-color: transparent;
+    border-color: #515151;
 }

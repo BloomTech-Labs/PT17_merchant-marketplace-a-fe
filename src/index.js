@@ -21,6 +21,7 @@ import thunk from 'redux-thunk';
 import Landing from './components/pages/Landing/Landing';
 
 // Seller Imports
+import MainNavBar from './components/common/mainNavBar';
 import SellerProfile from './components/sellerPages/profile';
 import Inventory from './components/sellerPages/inventory';
 import MyInfo from './components/sellerPages/profile/dashboard/myInfoSection/index.js';
@@ -29,6 +30,7 @@ import CurrentInventory from './components/sellerPages/inventory/current';
 import { ProductPage } from './components/pages/ProductPage';
 import { TestItemImageUpload } from './components/common';
 import ProductSearch from './components/pages/ProductSearch';
+import Orders from './components/pages/Orders/orders';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -56,6 +58,7 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
+      <MainNavBar />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
@@ -87,6 +90,7 @@ function App() {
           path="/test_image_upload"
           component={TestItemImageUpload}
         />
+        <SecureRoute path="/myprofile/orders" component={Orders} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>
