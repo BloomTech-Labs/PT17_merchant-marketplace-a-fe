@@ -28,6 +28,7 @@ import EditInfo from './components/sellerPages/profile/dashboard/edit/EditInfo.j
 import CurrentInventory from './components/sellerPages/inventory/current';
 import { ProductPage } from './components/pages/ProductPage';
 import { TestItemImageUpload } from './components/common';
+import ProductSearch from './components/pages/ProductSearch';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -61,6 +62,7 @@ function App() {
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <Route exact path="/" component={Landing} />
         <SecureRoute exact path="/myprofile" component={SellerProfile} />
+        <SecureRoute exact path="/ProductSearch" component={ProductSearch} />
         <SecureRoute
           exact
           path="/myprofile/inventory"
