@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './landing.css';
-import Top1 from '../Landing/Top1.jpg';
-import Top2 from '../Landing/Top2.jpg';
-import tittle_img from '../Landing/Top3.jpg';
-import middle_img from '../Landing/middle_img.jpg';
-import Top3 from '../Landing/Top4.jpg';
+import FeaturedProduct from './FeaturedProduct';
+// import {getExampleData} from '../../../api'; //will be replaced with api
 import logo from '../Landing/banner.png';
+import axios from 'axios';
 
 const Landing = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://my.api.mockaroo.com/pt17.json?key=d9048e30`)
+      .then(response => setProducts(response.data));
+  }, []);
+  console.log(products);
   return (
     <div className="container">
-      <h1 className="header">Antique and Vintage Furniture</h1>
+      <h1 className="header">Antique and Vintage Collection</h1>
       <div className="banner">
         <img src={logo} className="banner_img" />
+      </div>
+      <div className="featured_container">
+        <h1 className="title">Featured Listings</h1>
+        <div className="feature_grid">
+          {products.map(item => {
+            return <FeaturedProduct item={item} key={item.id} />;
+          })}
+        </div>
       </div>
     </div>
   );
