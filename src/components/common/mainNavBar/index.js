@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from 'antd';
 import {
@@ -11,7 +11,6 @@ import './mainNavBar.css';
 import { useOktaAuth } from '@okta/okta-react';
 import logo from '../mainNavBar/Merchant.png';
 import { SearchInput } from './Style';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
@@ -58,7 +57,7 @@ function MainNavBar() {
           onChange={({ target }) => SetSearchTerm(target.value)}
           placeholder="Search"
           active={searchActive}
-          // onSubmit={search}
+          onSubmit={search}
         />
       </div>
       <div className="nav_links">
