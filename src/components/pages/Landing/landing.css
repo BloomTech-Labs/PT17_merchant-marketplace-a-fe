@@ -1,134 +1,14 @@
-.top-rated {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    
-  }
-  .title-1 {
-      margin-top: 6%;
-      font-family: 'Segoe UI';
-      font-weight: lighter;
-      color:blue;
-      text-align:center;
-  }
-  .title-2 {
-   
-      margin-left: 2%;
-      font-family: 'Segoe UI';
-      font-weight: lighter;
-      color:black;
-      text-align: left;
-  
-  }
-  .top-img {
-    height: 200px;
-    width: 250px;
-    margin: auto;
-    display: block;
-    justify-content: center;     
-  }
-  .tittle{
-      padding-top: 10px;
-  }
-  .category{
-    
-    background-color:#74D5DD;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    
-  }
-  .category-image{
-    border-radius:50%;
-    width: 150px;
-    height: 150px;
-    
-  }
-  .category-Name{
-    text-align:center;
-    color:black;
-    font-weight: normal;
-    font-size: large;
-    
-  }
-  
-  
-  .category-container{
-    display:flex;
-  padding-top: 20px;
-  justify-content: space-evenly;
-  padding-bottom: 20px;
-  
-    
-  }
-  .RecentlyViewed-Name{
-    text-align:left;
-    color:black;
-  }
-  .RecentlyViewed{
-    display:flex;
-    justify-content:space-evenly;
-    padding-bottom: 20px;
-    padding-top: 20px;
-   
-  }
-  .RecentlyViewed-image{
-    width: 200px;
-    height: 200px;
-  }
-  .choose-category{
-    text-align: center;
-    color:black;
-    display: flex;
-    justify-content: center;
-    font-family: 'Segoe UI';
-    font-weight: normal;
-    font-size: x-large;
-  }
-  .container{
-    display: flex;
-    justify-content: center;
-  }
-  .ant-carousel .slick-slide {
-    height: 300px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    padding-bottom:20px;
-    
-  }
-  
-  .ant-carousel .slick-slide img {
-    height: 300px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    padding-bottom:20px;
-    
-  }
-  .ant-carousel .slick-dots li{
-    background-color:black;
-  }
-  body{
-    font-family: 'Segoe UI';
-  }
-  
-  @media only screen and (max-width: 600px) {
-      .top-rated {
-          display: flex;
-          flex-direction: column;
-          padding: 10%;
-          margin-left: 2;
-          
-        }
-  
-        .top-img {
-          height: 200px;
-          background-color: rebeccapurple;
-          margin: 2%;
-          box-shadow: 5px 10px gray;
-  }
-  }
+.container {
+  background-color: #f0e0d1;
+  max-width: 100%;
+}
+.container .header{
+  margin-top: 200px;
+}
+.container .banner{  background-color: red;
+
+}
+.container .banner .banner_img{
+  min-width: 100%;
+  height: 100vh;
+}

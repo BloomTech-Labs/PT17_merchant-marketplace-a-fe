@@ -23,7 +23,7 @@ h3 {
     padding: 50px
 }
 
-img {
+.order-item-container img {
     max-width: 200px;
     max-height: 100px;
 }
