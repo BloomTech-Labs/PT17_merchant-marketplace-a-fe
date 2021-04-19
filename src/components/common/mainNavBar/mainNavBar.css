@@ -1,5 +1,4 @@
 .nav-bar {
-
     display: flex;
     justify-content: space-between;
     background-color: #f0e0d1;
@@ -9,28 +8,24 @@
     z-index: 4;
     color:white;
     padding:25px ;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
-.title{
-    display: flex;
-    
-    font-weight: 30px;
-    font-size: large;
-   
-    
-}
-.nav-bar .logo_1{
+
+.nav-bar .title .logo_1{
     width: 300px;
     height: 100%;
    margin-left: 15%;
    padding-top: 4px;
 }
-
+img{
+   max-width: 500px !important; 
+}
 .navigation_links {
     display: flex;
     justify-content: center;
     width:100%;
     padding-top: 25px;
-    
 }
 .navigation_links .navigation_link{
     margin: 0 3%;
@@ -38,13 +33,13 @@
 }
 .search{
     display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 5%;
-  font-size: 1.2rem;
-  margin-right: 1%;
+    align-items: center;
+    justify-content: flex-end;
+    width: 5%;
+    font-size: 1.2rem;
+    margin-right: 1.3%;
     color: #515151;
-    padding-top: 19px;
+    padding-top: 12px;
 }
 .search input{
     background-color: #eedac9;
@@ -52,9 +47,9 @@
 .search .search_icon{
     margin-right: 2%;
     color: black;
+    font-size: 1.9rem;
 }
 .nav_links{
-    /* width: 400px; */
     padding-top: 25px;
     color:black; 
     display: flex;
@@ -65,11 +60,14 @@
 .nav_links .nav_link {
    text-decoration: none;
     color:black;
-    font-size: 1.2rem; 
     margin-right: 10%;
 }
 .nav_links .nav_icon{
     white-space: nowrap;
+    font-size: 1.9rem;
+}
+.nav_links .button{
+    font-size: 1.5rem;
 }
 .ant-btn{
     background-color: transparent;
