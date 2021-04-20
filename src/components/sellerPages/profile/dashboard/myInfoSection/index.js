@@ -16,7 +16,7 @@ import {
   Descriptions,
   Upload,
 } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, EditOutlined } from '@ant-design/icons';
 
 function MyInfo(props) {
   const history = useHistory();
@@ -45,6 +45,8 @@ function MyInfo(props) {
         </Breadcrumb>
       </Layout>
       <div>
+        <br></br>
+        <br></br>
         <Avatar size={64} icon={<UserOutlined />} />
       </div>
 
@@ -53,6 +55,7 @@ function MyInfo(props) {
           class="profile-pic"
           src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
         /> */}
+        <br></br>
         <div class="upload-button">Upload Profile Image</div>
         <input class="file-upload" type="file" accept="image/*" />
       </div>
@@ -67,7 +70,7 @@ function MyInfo(props) {
         <Descriptions.Item label="Telephone">
           {props.myInfo.phone_number}
         </Descriptions.Item>
-        <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
+        <Descriptions.Item label="Town">Hangzhou, Zhejiang</Descriptions.Item>
         <Descriptions.Item label="Email">
           {props.myInfo.email_address}
         </Descriptions.Item>
@@ -87,7 +90,8 @@ function MyInfo(props) {
         <h3>Description:{props.myInfo.description}</h3>
       </div> */}
 
-      <button onClick={clicked}>Edit</button>
+      {/* <button onClick={clicked}>Edit</button> */}
+      <EditOutlined onClick={clicked} />
     </>
   );
 }
