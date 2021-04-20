@@ -1,29 +1,29 @@
-.container {
+.landing_container {
   background-color: #f0e0d1;
   max-width: 100%;
  
 }
-.container .header{
-  margin-top: 200px;
+.landing_container .header{
+  padding-top: 200px;
    color: #472b13;
    font-family: 'Playfair Display', serif;
    font-size: 4.2rem;
 }
-.container .banner{
+.landing_container .banner{
   text-align: center;
 }
-.container .banner .banner_img{
+.landing_container .banner .banner_img{
   min-width: 80%;
   height: 600px;
 }
-.container .featured_container{
+.landing_container .featured_container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 120px;
 }
-.container .featured_container .title{
+.landing_container .featured_container .title{
   font-family: 'Playfair Display', serif;
   font-size: 3.2rem;
   color: #472b13;

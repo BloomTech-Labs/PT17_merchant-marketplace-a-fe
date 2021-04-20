@@ -15,7 +15,7 @@ const Landing = () => {
   }, []);
   console.log(products);
   return (
-    <div className="container">
+    <div className="landing_container">
       <h1 className="header">Antique and Vintage Collection</h1>
       <div className="banner">
         <img src={logo} className="banner_img" />
