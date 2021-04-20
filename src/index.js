@@ -19,7 +19,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Landing from './components/pages/Landing/Landing';
-
+import Footer from './components/common/footer';
 // Seller Imports
 import MainNavBar from './components/common/mainNavBar';
 import SellerProfile from './components/sellerPages/profile';
@@ -91,6 +91,7 @@ function App() {
         <SecureRoute path="/myprofile/orders" component={Orders} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
     </Security>
   );
 }
