@@ -21,7 +21,7 @@ const { Header, Content, Sider, Footer } = Layout;
 function NavBar({ searchVisible, data, setData }) {
   // const { authState, authService } = useOktaAuth();
   return (
-    <Layout>
+    <Layout style={{ flex: 'inherit' }}>
       <Header className="header" style={{ background: 'rgb(44, 140, 172)' }}>
         <div className="logo">
           {/* <div className="tittle">
@@ -30,74 +30,87 @@ function NavBar({ searchVisible, data, setData }) {
       </div> */}
         </div>
       </Header>
-      <Layout>
-        <Sider width={200} className="site-layout-background">
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+      <Layout
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          backgroundColor: 'white',
+        }}
+      >
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          style={{ height: '100%', borderRight: 0, width: '220px' }}
+        >
+          <SubMenu
+            key="sub1"
+            icon={<UserOutlined />}
+            title="Inventory"
+            style={{ color: 'black' }}
           >
-            <SubMenu
-              key="sub1"
-              icon={<UserOutlined />}
-              title="Inventory"
-              style={{ color: 'black' }}
-            >
-              <Menu.Item key="1">
-                Main <Link path to="/myprofile/inventory"></Link>
-              </Menu.Item>
+            <Menu.Item key="1">
+              Main <Link path to="/myprofile/inventory"></Link>
+            </Menu.Item>
 
-              <Menu.Item key="2">Published </Menu.Item>
-              <Menu.Item key="3">Drafts</Menu.Item>
-              <Menu.Item key="4">Archives</Menu.Item>
-            </SubMenu>
+            <Menu.Item key="2">Published </Menu.Item>
+            <Menu.Item key="3">Drafts</Menu.Item>
+            <Menu.Item key="4">Archives</Menu.Item>
+          </SubMenu>
 
-            <SubMenu
-              style={{ color: 'black' }}
-              key="sub3"
-              icon={<NotificationOutlined />}
-              title="Personal Information"
-            >
-              <Menu.Item key="9">
-                View <Link path to="/myprofile/myinfo"></Link>
-              </Menu.Item>
-              {/* <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item> */}
-            </SubMenu>
-          </Menu>
-        </Sider>
-        <Layout style={{ padding: '0 24px 24px', color: 'white' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
-
-            {/* <Breadcrumb.Item>App</Breadcrumb.Item> */}
-          </Breadcrumb>
-          <Content
-            className="site-layout-background"
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 300,
-            }}
+          <SubMenu
+            style={{ color: 'black' }}
+            key="sub3"
+            icon={<NotificationOutlined />}
+            title="Personal Information"
           >
-            <Dashboard />
-          </Content>
-        </Layout>
+            <Menu.Item key="9">
+              View <Link path to="/myprofile/myinfo"></Link>
+            </Menu.Item>
+            {/* <Menu.Item key="10">option10</Menu.Item>
+            <Menu.Item key="11">option11</Menu.Item>
+            <Menu.Item key="12">option12</Menu.Item> */}
+          </SubMenu>
+        </Menu>
+        {window.location.pathname === '/myprofile/myinfo' ||
+        window.location.pathname === '/myprofile/editinfo' ||
+        window.location.pathname === '/myprofile/inventory/additem' ? null : (
+          <Layout style={{ padding: '0 24px 24px', color: 'white' }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
+
+              {/* <Breadcrumb.Item>App</Breadcrumb.Item> */}
+            </Breadcrumb>
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 300,
+              }}
+            >
+              <Dashboard />
+            </Content>
+          </Layout>
+        )}
       </Layout>
-      <Layout>
-        <Footer style={{ textAlign: 'center' }}>
-          ​
-          <div className="legal">
-            <p>
-              &copy;{new Date().getFullYear()} MERCHANT MARKETPLACE | All rights
-              reserved | Terms Of Service | Privacy
-            </p>
-          </div>
-        </Footer>
-      </Layout>
+      <Footer
+        style={{
+          textAlign: 'center',
+          width: '100vw',
+          position: 'fixed',
+          bottom: '0px',
+        }}
+      >
+        ​
+        <div className="legal">
+          <p>
+            &copy;{new Date().getFullYear()} MERCHANT MARKETPLACE | All rights
+            reserved | Terms Of Service | Privacy
+          </p>
+        </div>
+      </Footer>
     </Layout>
 
     // <div className="nav-container" style={{ color: 'Black' }}>

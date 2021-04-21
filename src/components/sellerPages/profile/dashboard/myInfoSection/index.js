@@ -32,66 +32,73 @@ function MyInfo(props) {
 
   return (
     <>
-      <Layout
-        style={{
-          padding: '0 24px 24px',
-          color: 'white',
-          background: 'rgb(44, 140, 172)',
-        }}
-      >
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
-        </Breadcrumb>
-      </Layout>
-      <div>
-        <br></br>
-        <br></br>
-        <Avatar size={64} icon={<UserOutlined />} />
+      <div style={{ display: 'flex' }}>
+        <NavBar />
+        <div style={{ marginLeft: '50px' }}>
+          <Layout
+            style={{
+              padding: '0 24px 24px',
+              color: 'white',
+              background: 'rgb(44, 140, 172)',
+            }}
+          >
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
+            </Breadcrumb>
+          </Layout>
+          <div>
+            <br></br>
+            <br></br>
+            <Avatar size={64} icon={<UserOutlined />} />
+          </div>
+
+          <div>
+            {/* <img
+              class="profile-pic"
+              src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
+            /> */}
+            <br></br>
+            <div class="upload-button">Upload Profile Image</div>
+            <input class="file-upload" type="file" accept="image/*" />
+          </div>
+          {/* <NavBar /> */}
+          <br />
+          <br />
+
+          <Descriptions title="My Info" layout="vertical">
+            <Descriptions.Item label="Name:">
+              {props.myInfo.seller_name}
+            </Descriptions.Item>
+            <Descriptions.Item label="Telephone">
+              {props.myInfo.phone_number}
+            </Descriptions.Item>
+            <Descriptions.Item label="Town">
+              Hangzhou, Zhejiang
+            </Descriptions.Item>
+            <Descriptions.Item label="Email">
+              {props.myInfo.email_address}
+            </Descriptions.Item>
+            <Descriptions.Item label="Address" span={2}>
+              {props.myInfo.physical_address}
+            </Descriptions.Item>
+            <Descriptions.Item label="Description">
+              {props.myInfo.description}
+            </Descriptions.Item>
+          </Descriptions>
+
+          {/* <div>
+            <h3>Name:{props.myInfo.seller_name}</h3>
+            <h3>Address:{props.myInfo.physical_address}</h3>
+            <h3>Phone Number:{props.myInfo.phone_number}</h3>
+            <h3>Email:{props.myInfo.email_address}</h3>
+            <h3>Description:{props.myInfo.description}</h3>
+          </div> */}
+
+          {/* <button onClick={clicked}>Edit</button> */}
+          <EditOutlined onClick={clicked} />
+        </div>
       </div>
-
-      <div>
-        {/* <img
-          class="profile-pic"
-          src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
-        /> */}
-        <br></br>
-        <div class="upload-button">Upload Profile Image</div>
-        <input class="file-upload" type="file" accept="image/*" />
-      </div>
-      {/* <NavBar /> */}
-      <br />
-      <br />
-
-      <Descriptions title="My Info" layout="vertical">
-        <Descriptions.Item label="Name:">
-          {props.myInfo.seller_name}
-        </Descriptions.Item>
-        <Descriptions.Item label="Telephone">
-          {props.myInfo.phone_number}
-        </Descriptions.Item>
-        <Descriptions.Item label="Town">Hangzhou, Zhejiang</Descriptions.Item>
-        <Descriptions.Item label="Email">
-          {props.myInfo.email_address}
-        </Descriptions.Item>
-        <Descriptions.Item label="Address" span={2}>
-          {props.myInfo.physical_address}
-        </Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {props.myInfo.description}
-        </Descriptions.Item>
-      </Descriptions>
-
-      {/* <div>
-        <h3>Name:{props.myInfo.seller_name}</h3>
-        <h3>Address:{props.myInfo.physical_address}</h3>
-        <h3>Phone Number:{props.myInfo.phone_number}</h3>
-        <h3>Email:{props.myInfo.email_address}</h3>
-        <h3>Description:{props.myInfo.description}</h3>
-      </div> */}
-
-      {/* <button onClick={clicked}>Edit</button> */}
-      <EditOutlined onClick={clicked} />
     </>
   );
 }

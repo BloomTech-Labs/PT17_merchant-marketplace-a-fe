@@ -3,12 +3,15 @@
 }
 .contents{
     margin: 0 auto;
-    max-width: 700px;
     display: flex;
+    width: 100%
+}
+.dataCard:hover {
+    text-decoration: none;
 }
 .formContainer{
     max-width: 500px;
-    margin: 0 auto;
+    margin: -200px auto;
 }
 
 .confButton{
@@ -50,4 +53,21 @@ h1 {
 }
 .newImg{
     margin: 1rem;
+}
+.ant-carousel .slick-dots-bottom {
+    bottom: -5px !important;
+}
+.ant-carousel {
+    height: 500px;
+}
+.slick-list {
+    height: 500px;
+}
+.slick-active {
+    display: flex;
+    flex-direction: column;
+}
+.formContainer.contents {
+    display: flex;
+    flex-direction: column;
 }
