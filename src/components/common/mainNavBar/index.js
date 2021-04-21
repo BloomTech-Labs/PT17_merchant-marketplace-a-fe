@@ -12,6 +12,8 @@ import { useOktaAuth } from '@okta/okta-react';
 import logo from '../mainNavBar/Merchant.png';
 import { SearchInput } from './Style';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useHistory } from 'react-router-dom';
+import BrowseProducts from '../../pages/BrowseProducts';
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
@@ -23,9 +25,21 @@ function MainNavBar() {
   const { authState, authService } = useOktaAuth();
   const [searchActive, SetSearchActive] = useState(false);
   const [searchTerm, SetSearchTerm] = useState([]);
+  let history = useHistory();
 
   const search = e => {
-    e.preventDefault();
+    //  e.preventDefault();
+    history.push({
+      pathname: '/productSearch',
+      // search: '?query=abc',
+      state: { searchItem: searchTerm },
+    });
+  };
+  const handleKeypress = e => {
+    // it triggers by pressing enter key
+    if (e.keyCode == 13) {
+      search(e);
+    }
   };
 
   return (
@@ -37,7 +51,7 @@ function MainNavBar() {
         <Link to="/" className="navigation_link">
           Home
         </Link>
-        <Link to="/" className="navigation_link">
+        <Link to="/BrowseProducts" className="navigation_link">
           Browse
         </Link>
         <Link to="/" className="navigation_link">
@@ -58,7 +72,7 @@ function MainNavBar() {
           onChange={({ target }) => SetSearchTerm(target.value)}
           placeholder="Search"
           active={searchActive}
-          // onSubmit={search}
+          onKeyDown={handleKeypress}
         />
       </div>
       <div className="nav_links">

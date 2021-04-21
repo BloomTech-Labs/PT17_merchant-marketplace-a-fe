@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Input, Form, Button } from 'antd';
-import { AimOutlined, SearchOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Input, Form } from 'antd';
 import './BrowserBar.css';
 import { AutoComplete } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 function BrowserBar() {
   // const [search, setSearch] = useState();
   /* const searchHandle = e => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };*/
-  const submitHandler = () => {
-    console.log('hi');
+  let history = useHistory();
+  const submitHandler = data => {
+    history.push({
+      pathname: '/ProductSearch',
+      search: '?query=abc',
+      state: { detail: data },
+    });
   };
+
   //Dummy product name search
   const productName = [
     {
@@ -24,28 +30,10 @@ function BrowserBar() {
       value: 'Wall Street',
     },
   ];
-  /*
-const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const handleChange = e => {
-    
-    setSearchTerm(e.target.value);
-  
-  };
-  const handleClickItem = (data) => {
-    
-    setSearchTerm(data)
- }
-  useEffect(() => {
-    const results = productName.filter(product =>
-      product.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
-  }, [searchTerm]);*/
 
   const Search = Input.Search;
   return (
-    <Form className="search-bar" onFinish={submitHandler}>
+    <Form className="search-bar">
       <AutoComplete
         style={{
           width: 800,
@@ -54,7 +42,6 @@ const [searchTerm, setSearchTerm] = useState("");
         filterOption={(inputValue, option) =>
           option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
         }
-        onSearch={submitHandler}
       >
         <Input.Search
           size="large"
