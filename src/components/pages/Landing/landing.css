@@ -46,6 +46,9 @@
 }
 .feature_card .product_img{
   border-radius: 3%;
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
 }
 .feature_card .product_title{
   color: #000000;

@@ -10,8 +10,10 @@ const Landing = () => {
 
   useEffect(() => {
     axios
-      .get(`https://my.api.mockaroo.com/pt17.json?key=d9048e30`)
-      .then(response => setProducts(response.data));
+      .get(`${process.env.REACT_APP_API_URI}search`)
+      .then(response =>
+        setProducts(response.data.sort(() => 0.5 - Math.random()).slice(0, 12))
+      );
   }, []);
   console.log(products);
   return (
