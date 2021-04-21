@@ -194,5 +194,3 @@ export default () => {
     </Uploady>
   );
 };
-
-/* eslint jsx-a11y/accessible-emoji: 0 */
