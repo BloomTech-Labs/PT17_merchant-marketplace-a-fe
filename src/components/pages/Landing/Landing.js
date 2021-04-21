@@ -1,34 +1,34 @@
-import React from 'react';
-import MainNavBar from '../../common/mainNavBar';
+import React, { useState, useEffect } from 'react';
 import './landing.css';
-import BrowserBar from '../../common/browserBar';
-import Top1 from '../Landing/Top1.jpg';
-import Top2 from '../Landing/Top2.jpg';
-import tittle_img from '../Landing/Top3.jpg';
-import middle_img from '../Landing/middle_img.jpg';
-import Top3 from '../Landing/Top4.jpg';
-import logo from '../Landing/marketplace-logo.png';
+import FeaturedProduct from './FeaturedProduct';
+// import {getExampleData} from '../../../api'; //will be replaced with api
+import logo from '../Landing/banner.png';
+import axios from 'axios';
 
 const Landing = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URI}search`)
+      .then(response =>
+        setProducts(response.data.sort(() => 0.5 - Math.random()).slice(0, 12))
+      );
+  }, []);
+  console.log(products);
   return (
-    <div className="container">
-      <MainNavBar />
-      <div>
-        <img className="tittle_img" src={middle_img}></img>
-
-        <h1 className="title-2">Top rate merchants</h1>
-
-        <section className="top-rated">
-          <div className="top-img">
-            <img src={Top1}></img>
-          </div>
-          <div className="top-img">
-            <img src={Top2}></img>
-          </div>
-          <div className="top-img">
-            <img src={Top3}></img>
-          </div>
-        </section>
+    <div className="landing_container">
+      <h1 className="header">Antique and Vintage Collection</h1>
+      <div className="banner">
+        <img src={logo} className="banner_img" />
+      </div>
+      <div className="featured_container">
+        <h1 className="title">Featured Listings</h1>
+        <div className="feature_grid">
+          {products.map(item => {
+            return <FeaturedProduct item={item} key={item.id} />;
+          })}
+        </div>
       </div>
     </div>
   );

@@ -87,7 +87,7 @@ function NavBar({ searchVisible, data, setData }) {
           </Content>
         </Layout>
       </Layout>
-      <Layout>
+      {/* <Layout>
         <Footer style={{ textAlign: 'center' }}>
           ​
           <div className="legal">
@@ -97,7 +97,7 @@ function NavBar({ searchVisible, data, setData }) {
             </p>
           </div>
         </Footer>
-      </Layout>
+      </Layout> */}
     </Layout>
 
     // <div className="nav-container" style={{ color: 'Black' }}>
