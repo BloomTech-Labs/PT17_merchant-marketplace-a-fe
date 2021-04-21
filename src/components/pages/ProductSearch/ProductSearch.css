@@ -1,0 +1,11 @@
+.productResult_container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10%;
+    border: black 1px;
+}
+.productResult{
+    margin:1%;
+}

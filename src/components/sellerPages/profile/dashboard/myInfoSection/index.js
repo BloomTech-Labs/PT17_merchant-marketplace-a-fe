@@ -17,6 +17,7 @@ import {
   Upload,
 } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
+import Uploader from './Uploader';
 
 function MyInfo(props) {
   const history = useHistory();
@@ -66,37 +67,36 @@ function MyInfo(props) {
           <br />
           <br />
 
-          <Descriptions title="My Info" layout="vertical">
-            <Descriptions.Item label="Name:">
-              {props.myInfo.seller_name}
-            </Descriptions.Item>
-            <Descriptions.Item label="Telephone">
-              {props.myInfo.phone_number}
-            </Descriptions.Item>
-            <Descriptions.Item label="Town">
-              Hangzhou, Zhejiang
-            </Descriptions.Item>
-            <Descriptions.Item label="Email">
-              {props.myInfo.email_address}
-            </Descriptions.Item>
-            <Descriptions.Item label="Address" span={2}>
-              {props.myInfo.physical_address}
-            </Descriptions.Item>
-            <Descriptions.Item label="Description">
-              {props.myInfo.description}
-            </Descriptions.Item>
-          </Descriptions>
-
-          {/* <div>
-            <h3>Name:{props.myInfo.seller_name}</h3>
-            <h3>Address:{props.myInfo.physical_address}</h3>
-            <h3>Phone Number:{props.myInfo.phone_number}</h3>
-            <h3>Email:{props.myInfo.email_address}</h3>
-            <h3>Description:{props.myInfo.description}</h3>
-          </div> */}
-
-          {/* <button onClick={clicked}>Edit</button> */}
-          <EditOutlined onClick={clicked} />
+          <Layout>
+            <EditOutlined
+              onClick={clicked}
+              style={{ textAlign: 'right', marginRight: 50, marginTop: 20 }}
+            />
+            <Descriptions
+              title="My Info"
+              layout="vertical"
+              style={{ textAlign: 'top', marginLeft: 50 }}
+            >
+              <Descriptions.Item label="Name:">
+                {props.myInfo.seller_name}
+              </Descriptions.Item>
+              <Descriptions.Item label="Telephone">
+                {props.myInfo.phone_number}
+              </Descriptions.Item>
+              <Descriptions.Item label="Town">
+                Hangzhou, Zhejiang
+              </Descriptions.Item>
+              <Descriptions.Item label="Email">
+                {props.myInfo.email_address}
+              </Descriptions.Item>
+              <Descriptions.Item label="Address" span={2}>
+                {props.myInfo.physical_address}
+              </Descriptions.Item>
+              <Descriptions.Item label="Description">
+                {props.myInfo.description}
+              </Descriptions.Item>
+            </Descriptions>
+          </Layout>
         </div>
       </div>
     </>
