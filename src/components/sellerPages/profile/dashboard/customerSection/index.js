@@ -16,7 +16,7 @@ function CustomerSection() {
       </div>
 
       {/* <SmallItemCard headerText={36} descText="Customers" /> */}
-      <Link path to="/Orders">
+      <Link path to="/orders">
         <button type="button" class="btn btn-primary float-right">
           View Orders
         </button>
