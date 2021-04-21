@@ -1,7 +1,15 @@
 import axios from 'axios';
 
 // we will define a bunch of API calls here.
-const apiUrl = `${process.env.REACT_APP_API_URI}profile`;
+const apiUrl = `${process.env.REACT_APP_API_URI}profiles`;
+const productsUrl = `${process.env.REACT_APP_API_URI}items`;
+const searchUrl = `${process.env.REACT_APP_API_URI}search`;
+
+const search = async searchData => {
+  const { title, zip, address, category } = searchData;
+  return await axios.get(`${searchUrl}?title=${title}&zip=${zip}`);
+};
+
 const ordersUrl = `${process.env.REACT_APP_API_URI}orders`;
 
 const sleep = time =>
@@ -13,6 +21,19 @@ const getExampleData = () => {
   return axios
     .get(`https://jsonplaceholder.typicode.com/photos?albumId=1`)
     .then(response => response.data);
+};
+//
+const apiAuthGetProducts = authHeader => {
+  return axios.get(productsUrl, { headers: authHeader });
+};
+//ProductsData
+const getProductsData = async authState => {
+  try {
+    return await apiAuthGetProducts(getAuthHeader(authState));
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 };
 
 const getAuthHeader = authState => {
@@ -125,4 +146,6 @@ export {
   postData,
   putData,
   deleteData,
+  getProductsData,
+  search,
 };
