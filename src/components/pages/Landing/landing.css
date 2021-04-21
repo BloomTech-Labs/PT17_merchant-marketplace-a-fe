@@ -50,10 +50,17 @@
   height: 300px;
   object-fit: cover;
 }
+.feature_card{
+  font-size: 1.4rem;
+}
+.feature_card_link:hover{
+  text-decoration: none !important;
+}
 .feature_card .product_title{
   color: #000000;
   padding: 3px;
   font-family: 'Montserrat', sans-serif;
+  
 }
 .feature_card .price{
   color: #472b13;
