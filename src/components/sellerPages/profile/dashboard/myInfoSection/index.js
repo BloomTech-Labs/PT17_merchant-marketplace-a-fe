@@ -17,6 +17,7 @@ import {
   Upload,
 } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
+import Uploader from './Uploader';
 
 function MyInfo(props) {
   const history = useHistory();
@@ -47,7 +48,13 @@ function MyInfo(props) {
       <div>
         <br></br>
         <br></br>
-        <Avatar size={64} icon={<UserOutlined />} />
+        <Uploader>
+          <img
+            id="logo"
+            src="https://res.cloudinary.com/yoav-cloud/image/upload/v1587564735/rpldy/logo/react-uploady-text-logo-light.png"
+          />
+        </Uploader>
+        {/* <Avatar size={64} icon={<UserOutlined />} /> */}
       </div>
 
       <div>
@@ -56,31 +63,41 @@ function MyInfo(props) {
           src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
         /> */}
         <br></br>
-        <div class="upload-button">Upload Profile Image</div>
-        <input class="file-upload" type="file" accept="image/*" />
+        {/* <div class="upload-button">Upload Profile Image</div>
+        <input class="file-upload" type="file" accept="image/*" /> */}
       </div>
       {/* <NavBar /> */}
       <br />
       <br />
 
-      <Descriptions title="My Info" layout="vertical">
-        <Descriptions.Item label="Name:">
-          {props.myInfo.seller_name}
-        </Descriptions.Item>
-        <Descriptions.Item label="Telephone">
-          {props.myInfo.phone_number}
-        </Descriptions.Item>
-        <Descriptions.Item label="Town">Hangzhou, Zhejiang</Descriptions.Item>
-        <Descriptions.Item label="Email">
-          {props.myInfo.email_address}
-        </Descriptions.Item>
-        <Descriptions.Item label="Address" span={2}>
-          {props.myInfo.physical_address}
-        </Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {props.myInfo.description}
-        </Descriptions.Item>
-      </Descriptions>
+      <Layout>
+        <EditOutlined
+          onClick={clicked}
+          style={{ textAlign: 'right', marginRight: 50, marginTop: 20 }}
+        />
+        <Descriptions
+          title="My Info"
+          layout="vertical"
+          style={{ textAlign: 'top', marginLeft: 50 }}
+        >
+          <Descriptions.Item label="Name:">
+            {props.myInfo.seller_name}
+          </Descriptions.Item>
+          <Descriptions.Item label="Telephone">
+            {props.myInfo.phone_number}
+          </Descriptions.Item>
+          <Descriptions.Item label="Town">Hangzhou, Zhejiang</Descriptions.Item>
+          <Descriptions.Item label="Email">
+            {props.myInfo.email_address}
+          </Descriptions.Item>
+          <Descriptions.Item label="Address" span={2}>
+            {props.myInfo.physical_address}
+          </Descriptions.Item>
+          <Descriptions.Item label="Description">
+            {props.myInfo.description}
+          </Descriptions.Item>
+        </Descriptions>
+      </Layout>
 
       {/* <div>
         <h3>Name:{props.myInfo.seller_name}</h3>
@@ -91,7 +108,6 @@ function MyInfo(props) {
       </div> */}
 
       {/* <button onClick={clicked}>Edit</button> */}
-      <EditOutlined onClick={clicked} />
     </>
   );
 }

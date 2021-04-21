@@ -22,14 +22,10 @@ function NavBar({ searchVisible, data, setData }) {
   // const { authState, authService } = useOktaAuth();
   return (
     <Layout>
-      <Header className="header" style={{ background: 'rgb(44, 140, 172)' }}>
-        <div className="logo">
-          {/* <div className="tittle">
-        <img className="logo_1" src={logo}></img>
-        <div className="project-tittle">MERCHANT MARKETPLACE</div>
-      </div> */}
-        </div>
-      </Header>
+      <Header
+        className="header"
+        style={{ background: 'rgb(44, 140, 172)' }}
+      ></Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
           <Menu
@@ -42,13 +38,13 @@ function NavBar({ searchVisible, data, setData }) {
               key="sub1"
               icon={<UserOutlined />}
               title="Inventory"
-              style={{ color: 'black' }}
+              style={{ color: 'black', marginTop: 50 }}
             >
               <Menu.Item key="1">
-                Main <Link path to="/myprofile/inventory"></Link>
+                Published <Link path to="/myprofile/inventory"></Link>
               </Menu.Item>
 
-              <Menu.Item key="2">Published </Menu.Item>
+              {/* <Menu.Item key="2">Published </Menu.Item> */}
               <Menu.Item key="3">Drafts</Menu.Item>
               <Menu.Item key="4">Archives</Menu.Item>
             </SubMenu>
@@ -69,12 +65,6 @@ function NavBar({ searchVisible, data, setData }) {
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px', color: 'white' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
-
-            {/* <Breadcrumb.Item>App</Breadcrumb.Item> */}
-          </Breadcrumb>
           <Content
             className="site-layout-background"
             style={{
@@ -126,28 +116,7 @@ function NavBar({ searchVisible, data, setData }) {
     //       {/* <Button onClick={unPublishedChange}>Drafts</Button> */}
     //       <a class="dropdown-item" href="#">Archives</a>
     //     </div>
-    //   </li>
-    //     {/* Inventory</Link> */}
-
-    //     <Link style={{ color: 'Black' }}>Orders</Link>
-    //     <Link style={{ color: 'Black' }}>Payment</Link>
-    //     <Link to="/myprofile/myinfo" style={{ color: 'Black' }}>Personal Information</Link>
-    //     <Link to="/myprofile" style={{ color: 'Black' }}>Dashboard</Link>
-    //     <Link>
-
-    //     <a href="#" >
-    //       <span class="glyphicon glyphicon-envelope"></span>
-
-    //     </a>
-    //     </Link>
-    //   </div>
-    //   <SearchBar searchVisible={searchVisible} setData={setData} data={data} />
-
-    // </div>
   );
-  // function unPublishedChange() {
-  //   setData('$#&unpublished');
-  // }
 }
 
 export default NavBar;
