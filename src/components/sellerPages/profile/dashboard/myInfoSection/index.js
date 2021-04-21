@@ -73,12 +73,12 @@ function MyInfo(props) {
       <Layout>
         <EditOutlined
           onClick={clicked}
-          style={{ textAlign: 'right', margin: 10 }}
+          style={{ textAlign: 'right', marginRight: 50, marginTop: 20 }}
         />
         <Descriptions
           title="My Info"
           layout="vertical"
-          style={{ textAlign: 'top', marginLeft: 20 }}
+          style={{ textAlign: 'top', marginLeft: 50 }}
         >
           <Descriptions.Item label="Name:">
             {props.myInfo.seller_name}

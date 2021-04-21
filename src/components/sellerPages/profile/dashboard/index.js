@@ -3,7 +3,6 @@ import './dashboard.css';
 import InvSection from './invSection';
 import OrderSection from './orderSection';
 import CustomerSection from './customerSection';
-//import Charts from '../charts/MyChart';
 import { Card, Col, Row } from 'antd';
 function Dashboard() {
   return (
@@ -23,6 +22,7 @@ function Dashboard() {
         </Col>
         <Col span={8}>
           <Card title="Messages" bordered={false}>
+            {' '}
             <CustomerSection />
           </Card>
         </Col>

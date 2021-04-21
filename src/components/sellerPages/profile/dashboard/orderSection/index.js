@@ -14,7 +14,7 @@ function OrderSection() {
         price={3.33}
         itemCount={9}
       /> */}
-      <Link path to="/orders">
+      <Link path to="/myprofile/orders">
         {/* <Link className="activeLink"> */}
         <button
           className="activeLink"
