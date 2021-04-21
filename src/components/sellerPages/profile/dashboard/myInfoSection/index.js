@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../../common/navBar';
 import { connect } from 'react-redux';
-import { fetchMyInfo, editMyInfo } from '../../../../../state/actions';
+import {
+  fetchMyInfo,
+  editMyInfo,
+  addProfileImage,
+} from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
 import {
   Menu,
@@ -17,11 +21,15 @@ import {
   Upload,
 } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
-import Uploader from './Uploader';
+import uploadcare from 'uploadcare-widget';
+import { useDispatch } from 'react-redux';
 
 function MyInfo(props) {
   const history = useHistory();
   const { authState } = useOktaAuth();
+  const [photos, setPhotos] = useState('');
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     props.fetchMyInfo(authState);
@@ -29,6 +37,21 @@ function MyInfo(props) {
 
   function clicked(event) {
     history.push('/myprofile/editinfo');
+  }
+
+  function openUploadDialog(e) {
+    let dialog = uploadcare.openDialog(null, {
+      publicKey: '7f074009b333b2d5be63',
+      imagesOnly: true,
+    });
+    dialog.done(function(file, fileGroup, list) {
+      setLoading(true);
+      file.promise().done(function(fileInfo) {
+        setLoading(false);
+        addProfileImage(authState, props.myInfo.id, fileInfo.originalUrl);
+        console.log('fileinfo: ', fileInfo);
+      });
+    });
   }
 
   return (
@@ -51,19 +74,23 @@ function MyInfo(props) {
           <div>
             <br></br>
             <br></br>
-            <Avatar size={64} icon={<UserOutlined />} />
+            {props.myInfo.avatarUrl ? (
+              <Avatar size={64} src={props.myInfo.avatarUrl} />
+            ) : (
+              <Avatar size={64} icon={<UserOutlined />} />
+            )}
           </div>
 
           <div>
-            {/* <img
-              class="profile-pic"
-              src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"
-            /> */}
             <br></br>
-            <div class="upload-button">Upload Profile Image</div>
-            <input class="file-upload" type="file" accept="image/*" />
+            <button
+              class="upload-button"
+              onClick={openUploadDialog}
+              style={{ border: '1px solid black', borderRadius: '5px' }}
+            >
+              Edit Image
+            </button>
           </div>
-          {/* <NavBar /> */}
           <br />
           <br />
 
@@ -78,7 +105,7 @@ function MyInfo(props) {
               style={{ textAlign: 'top', marginLeft: 50 }}
             >
               <Descriptions.Item label="Name:">
-                {props.myInfo.seller_name}
+                {props.myInfo.name}
               </Descriptions.Item>
               <Descriptions.Item label="Telephone">
                 {props.myInfo.phone_number}
@@ -87,7 +114,7 @@ function MyInfo(props) {
                 Hangzhou, Zhejiang
               </Descriptions.Item>
               <Descriptions.Item label="Email">
-                {props.myInfo.email_address}
+                {props.myInfo.email}
               </Descriptions.Item>
               <Descriptions.Item label="Address" span={2}>
                 {props.myInfo.physical_address}
@@ -110,4 +137,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchMyInfo, editMyInfo })(MyInfo);
+export default connect(mapStateToProps, {
+  fetchMyInfo,
+  editMyInfo,
+  addProfileImage,
+})(MyInfo);

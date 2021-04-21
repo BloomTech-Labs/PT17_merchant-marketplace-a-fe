@@ -39,11 +39,12 @@ function EditInfo(props) {
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
+    <div style={{ display: 'flex', height: '700px' }}>
       <NavBar />
       <div
         style={{
-          margin: '200px 0 0 15%',
+          position: 'absolute',
+          margin: '150px 42% 0px',
           width: '330px',
           height: '550px',
           display: 'flex',
