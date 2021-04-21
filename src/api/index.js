@@ -3,13 +3,13 @@ import axios from 'axios';
 // we will define a bunch of API calls here.
 const apiUrl = `${process.env.REACT_APP_API_URI}profiles`;
 const productsUrl = `${process.env.REACT_APP_API_URI}items`;
-//const searchUrl = `${process.env.REACT_APP_API_URI}search`
-/*
+const searchUrl = `${process.env.REACT_APP_API_URI}search`;
+
 const search = async searchData => {
-  const {title, zip, address, category} = searchData
-  return await axios.get(`${searchUrl}?title=${title}&zip=${zip}`)
-}
-*/
+  const { title, zip, address, category } = searchData;
+  return await axios.get(`${searchUrl}?title=${title}&zip=${zip}`);
+};
+
 const ordersUrl = `${process.env.REACT_APP_API_URI}orders`;
 
 const sleep = time =>
@@ -147,4 +147,5 @@ export {
   putData,
   deleteData,
   getProductsData,
+  search,
 };
