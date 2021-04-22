@@ -39,57 +39,77 @@ function EditInfo(props) {
   }
 
   return (
-    <>
+    <div style={{ display: 'flex', height: '700px' }}>
       <NavBar />
-      <br />
-      <br />
-      <label>
-        Name
-        <input
-          name="seller_name"
-          value={sellerForm.seller_name}
-          onChange={editForm}
-        ></input>
-      </label>
-      <br />
-      <label>
-        Address
-        <input
-          name="physical_address"
-          value={sellerForm.physical_address}
-          onChange={editForm}
-        ></input>
-      </label>
-      <br />
-      <label>
-        PhoneNumber
-        <input
-          name="phone_number"
-          value={sellerForm.phone_number}
-          onChange={editForm}
-        ></input>
-      </label>
-      <br />
-      <label>
-        Email
-        <input
-          name="email_address"
-          value={sellerForm.email_address}
-          onChange={editForm}
-        ></input>
-      </label>
-      <br />
-      <label>
-        Description
-        <input
-          name="description"
-          value={sellerForm.description}
-          onChange={editForm}
-        ></input>
-      </label>
-      <button onClick={submitEdit}>submit</button>
-      <button onClick={cancelEdit}>cancel</button>
-    </>
+      <div
+        style={{
+          position: 'absolute',
+          margin: '150px 42% 0px',
+          width: '330px',
+          height: '550px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <h4 style={{ borderBottom: '1px solid lightgrey' }}>Edit Profile</h4>
+        <br />
+        <br />
+        <label>
+          Name
+          <br />
+          <input
+            name="seller_name"
+            value={sellerForm.seller_name}
+            onChange={editForm}
+          ></input>
+        </label>
+        <br />
+        <label>
+          Address
+          <br />
+          <input
+            name="physical_address"
+            value={sellerForm.physical_address}
+            onChange={editForm}
+          ></input>
+        </label>
+        <br />
+        <label>
+          PhoneNumber
+          <br />
+          <input
+            name="phone_number"
+            value={sellerForm.phone_number}
+            onChange={editForm}
+          ></input>
+        </label>
+        <br />
+        <label>
+          Email
+          <br />
+          <input
+            name="email_address"
+            value={sellerForm.email_address}
+            onChange={editForm}
+          ></input>
+        </label>
+        <br />
+        <label>
+          Description
+          <br />
+          <input
+            name="description"
+            value={sellerForm.description}
+            onChange={editForm}
+          ></input>
+        </label>
+        <br />
+        <button onClick={submitEdit}>submit</button>
+        <button onClick={cancelEdit}>cancel</button>
+      </div>
+    </div>
   );
 }
 

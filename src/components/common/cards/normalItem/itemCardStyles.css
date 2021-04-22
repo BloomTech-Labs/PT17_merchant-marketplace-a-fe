@@ -1,12 +1,14 @@
 
 .cardContainer{
     height: auto;
-    border-bottom: solid lightgray 1px;
+    border-top: solid lightgray 1px;
     display: flex;
     justify-content: space-between;
-    padding: 5px;
-    margin: 10px 0 10px 0;
-   
+    padding: 25px 5px 0 5px;
+    margin: 10px 0 0 0;
+}
+.ant-card-body:hover {
+    text-decoration: none !important;
 }
 .cardImage{
     width: 150px;
@@ -15,7 +17,7 @@
     object-fit: contain;
 }
 .cardDesc{
-    width: 60%;
+    width: auto;
     max-width: 120px;
     overflow-y: hidden;
     max-width: 400px;
@@ -32,7 +34,8 @@
 .categories-tags{
     display: flex;
     justify-content: space-around;
-
+    flex-direction: column;
+    margin-right: 15px;
 }
 .category-tag{
     display: flex;
@@ -46,12 +49,17 @@
 .category{
     color: grey;
     align-content: flex-end;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    text-align: center;
 }
 .skeleton-card{
-     display: flex;
-      justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .skeleton-img{
-     margin-right: 2rem;
+    margin-right: 2rem;
+    margin-top: 3rem; 
       margin-top: 3rem; 
+    margin-top: 3rem; 
 }
