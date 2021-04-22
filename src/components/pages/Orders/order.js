@@ -10,24 +10,29 @@ function Order(props) {
       <div className="order-container">
         <div className="order-heading">
           <div>
-            <h3>Item Name</h3>
-            <h2> {props.name}</h2>
-          </div>
-
-          <div>
             <h3> Order Placed </h3>
-            <h2> {props.data}</h2>
+            <h2> 04/20/21</h2>
           </div>
           <div>
             <h3> Shipping To</h3>
             <h2> {props.shipto}</h2>
+          </div>
+          <div className="order-quantity-data">
+            <h3 className="order-quantity">Order Quantity</h3>
+            <h2>{props.orderquan}</h2>
           </div>
         </div>
 
         <div className="order-item-container">
           <img src={logo} />
 
-          <p className="order-description">{props.description}</p>
+          <div className="order-description">
+            <div className="item-name-container">
+              <h2> {props.name}</h2>
+            </div>
+
+            <p>{props.description}</p>
+          </div>
         </div>
       </div>
     </div>

@@ -33,6 +33,8 @@ const GetOrders = () => {
             name={order.item_name}
             shipto={order.buyer_id}
             description={order.description}
+            orderquan={order.quantity}
+            availquan={order.quantity_available}
           />
         </div>
       ))}
