@@ -28,7 +28,7 @@ function AddPhotos({ setProgress, slider, setPhotos, photos }) {
   }
 
   return (
-    <div className="contents">
+    <div className="contents" style={{ display: 'flex', flexWrap: 'wrap' }}>
       <h1>Add photos of the item</h1>
       <div
         onClick={openUploadDialog}
