@@ -49,7 +49,12 @@ function ItemCard({ name, description, price, image, count, published }) {
       {loading ? (
         <Skeleton.Image active className="cardImage" />
       ) : (
-        <img src={img} className="cardImage" alt="product for sell" />
+        <div>
+          <img src={img} className="cardImage" alt="product for sell" />
+          <h2 className="cardPrice" style={{ textAlign: 'center' }}>
+            ${dollars}
+          </h2>
+        </div>
       )}
 
       <div className="cardDesc">
@@ -59,7 +64,7 @@ function ItemCard({ name, description, price, image, count, published }) {
         </p>
         <div className="categories-tags">
           <div className="category-tag ">
-            <h3>Categories: </h3>
+            <h3 style={{ textAlign: 'center' }}>Categories</h3>
             {categories.map(category => (
               <p className="category" key={category.id}>
                 {category.category_name}
@@ -67,7 +72,7 @@ function ItemCard({ name, description, price, image, count, published }) {
             ))}
           </div>
           <div className="category-tag">
-            <h3>Tags: </h3>
+            <h3 style={{ textAlign: 'center' }}>Tags</h3>
             {tags.map(tag => (
               <Tag className="tags" style={{ width: 'auto' }} key={tag.id}>
                 {tag.tag_name}
@@ -78,7 +83,6 @@ function ItemCard({ name, description, price, image, count, published }) {
       </div>
 
       <div>
-        <h2 className="cardPrice">${dollars}</h2>
         {count !== 0 ? (
           <h2 style={{ color: 'green' }}>QTY: {count}</h2>
         ) : (
