@@ -15,7 +15,7 @@ function NewItem({ setProgress, slider, setData }) {
   };
 
   return (
-    <div className="contents">
+    <div className="contents" style={{ height: '600px' }}>
       <h1>Main Information</h1>
       <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
         {/*======================Product Name========================== */}
