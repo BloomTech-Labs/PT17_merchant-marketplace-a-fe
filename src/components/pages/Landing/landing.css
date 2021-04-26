@@ -66,3 +66,30 @@
   color: #472b13;
   font-family: 'Montserrat', sans-serif;
 }
+
+.selling{
+  margin-top: 3%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5%;
+  border-radius: 3%;
+}
+.selling_text{
+  width: 30%;
+  background-color: #dfc1a6;
+  border-radius: 3% 0 0 3%;
+  text-align: center;
+  padding: 3%;
+  font-family: 'Montserrat', sans-serif;
+  color: #472b13;
+}
+.selling p{
+  font-size: 1.4rem;
+  padding-top: 1%;
+}
+.selling .selling_img{
+  max-width: 60%;
+  border-radius: 0 3% 3% 0;
+
+}

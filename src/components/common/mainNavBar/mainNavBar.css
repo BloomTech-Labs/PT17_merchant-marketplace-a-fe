@@ -20,9 +20,7 @@
    margin-left: 15%;
    padding-top: 4px;
 }
-img{
-   max-width: 500px !important; 
-}
+
 .navigation_links {
     display: flex;
     justify-content: center;
