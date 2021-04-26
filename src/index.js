@@ -32,6 +32,7 @@ import { TestItemImageUpload } from './components/common';
 import ProductSearch from './components/pages/ProductSearch';
 import BrowseProducts from './components/pages/BrowseProducts';
 import Orders from './components/pages/Orders/orders';
+import BuyerOrders from './components/buyerPages/buyersPages/buyerOrders';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -92,10 +93,13 @@ function App() {
           path="/test_image_upload"
           component={TestItemImageUpload}
         />
+
         <SecureRoute path="/myprofile/orders" component={Orders} />
+
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
+      <SecureRoute path="/myprofile/myorders" component={BuyerOrders} />s
     </Security>
   );
 }
