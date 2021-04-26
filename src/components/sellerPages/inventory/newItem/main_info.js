@@ -10,6 +10,13 @@ function NewItem({ setProgress, slider, setData }) {
   const onFinish = values => {
     setData(values);
   };
+  const onChange = e => {
+    setData({
+      ...form.getFieldsValue(),
+      [e[0].name]: e[0].value,
+    });
+    console.log(form.getFieldsValue());
+  };
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
@@ -17,7 +24,12 @@ function NewItem({ setProgress, slider, setData }) {
   return (
     <div className="contents" style={{ height: '600px' }}>
       <h1>Main Information</h1>
-      <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <Form
+        form={form}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        onFieldsChange={onChange}
+      >
         {/*======================Product Name========================== */}
         <Form.Item
           name="item_name"
@@ -45,12 +57,7 @@ function NewItem({ setProgress, slider, setData }) {
         </Form.Item>
         {/*==============Price In Cents================ */}
         <Form.Item name="price_in_cents" label="Price in cents: " required>
-          <InputNumber
-            placeholder="Price per item"
-            min={1}
-            defaultValue={1}
-            onChange={onFinish}
-          />
+          <InputNumber placeholder="Price per item" min={1} defaultValue={1} />
         </Form.Item>
         {/*================Quantity Available=============== */}
         <Form.Item
@@ -80,6 +87,7 @@ function NewItem({ setProgress, slider, setData }) {
           setProgress={setProgress}
           slider={slider}
           progressPercent={20}
+          onClick={onFinish}
           text="Next"
         />
       </Form>
