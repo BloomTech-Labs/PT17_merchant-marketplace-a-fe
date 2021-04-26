@@ -95,11 +95,11 @@ function App() {
         />
 
         <SecureRoute path="/myprofile/orders" component={Orders} />
+        <SecureRoute path="/myprofile/myorders" component={BuyerOrders} />
 
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
-      <SecureRoute path="/myprofile/myorders" component={BuyerOrders} />s
     </Security>
   );
 }
