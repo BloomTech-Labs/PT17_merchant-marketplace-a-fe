@@ -55,13 +55,16 @@ h1 {
     margin: 1rem;
 }
 .ant-carousel .slick-dots-bottom {
-    bottom: -5px !important;
+    bottom: 170px !important;
+}
+.slick-dots li button {
+    background-color: black !important;
 }
 .ant-carousel {
-    height: 500px;
+    height: 600px;
 }
 .slick-list {
-    height: 500px;
+    height: 600px;
 }
 .slick-active {
     display: flex;

@@ -22,14 +22,12 @@ import {
 } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
 import uploadcare from 'uploadcare-widget';
-import { useDispatch } from 'react-redux';
 
 function MyInfo(props) {
   const history = useHistory();
   const { authState } = useOktaAuth();
   const [photos, setPhotos] = useState('');
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     props.fetchMyInfo(authState);
@@ -48,7 +46,7 @@ function MyInfo(props) {
       setLoading(true);
       file.promise().done(function(fileInfo) {
         setLoading(false);
-        addProfileImage(authState, props.myInfo.id, fileInfo.originalUrl);
+        props.addProfileImage(authState, props.myInfo.id, fileInfo.originalUrl);
         console.log('fileinfo: ', fileInfo);
       });
     });

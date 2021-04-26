@@ -27,7 +27,7 @@ function Finalize({
     );
   };
   return (
-    <div className="contents">
+    <div className="contents" style={{ display: 'flex', flexWrap: 'wrap' }}>
       <NewItemInfo
         photos={photos}
         mainInfo={mainInfo}

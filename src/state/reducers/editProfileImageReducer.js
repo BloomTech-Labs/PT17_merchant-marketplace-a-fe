@@ -16,7 +16,7 @@ const editProfileImageReducer = (state = initialState, action) => {
       return { ...state, getAddProfileImageStatus: requestStatus.loading };
     case ADD_PROFILE_IMAGE_SUCCESS:
       return {
-        newProfileImage: action.payload,
+        newProfileImage: action.payload.profile.avatarUrl,
         getAddProfileImageStatus: requestStatus.loading,
       };
     case ADD_PROFILE_IMAGE_ERROR:

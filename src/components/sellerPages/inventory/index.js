@@ -77,7 +77,7 @@ function Inventory({
   return (
     <>
       <NavBar />
-      <div className="outerContainer">
+      <div className="outerContainer" style={{ height: '900px' }}>
         <div className="formContainer">
           <ProgressBar percent={progressPoint} status={progressStatus} />
           <Carousel ref={slider}>
