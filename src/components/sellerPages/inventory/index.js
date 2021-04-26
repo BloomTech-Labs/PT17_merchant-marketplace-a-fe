@@ -42,6 +42,7 @@ function Inventory({
       new_item: {
         ...mainInfo,
         seller_profile_id: seller_profile_id,
+        order_type_id: 1,
       },
       category: {
         ...categoryInfo,
@@ -53,10 +54,11 @@ function Inventory({
         photos,
       },
     };
-
+    debugger;
     setNewItemData(completeObject);
 
     addProduct(completeObject, authState).then(response => {
+      debugger;
       addItemImage(authState, response.id, photos);
       categoryInfo.forEach(category =>
         addProductCategory(authState, response.id, category.id)
@@ -75,7 +77,7 @@ function Inventory({
   return (
     <>
       <NavBar />
-      <div className="outerContainer">
+      <div className="outerContainer" style={{ height: '900px' }}>
         <div className="formContainer">
           <ProgressBar percent={progressPoint} status={progressStatus} />
           <Carousel ref={slider}>

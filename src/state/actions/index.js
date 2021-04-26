@@ -46,6 +46,10 @@ export const ADD_ITEM_IMAGE_START = 'ADD_ITEM_IMAGE_START';
 export const ADD_ITEM_IMAGE_SUCCESS = 'ADD_ITEM_IMAGE_SUCCESS';
 export const ADD_ITEM_IMAGE_ERROR = 'ADD_ITEM_IMAGE_ERROR';
 
+export const ADD_PROFILE_IMAGE_START = 'ADD_PROFILE_IMAGE_START';
+export const ADD_PROFILE_IMAGE_SUCCESS = 'ADD_PROFILE_IMAGE_SUCCESS';
+export const ADD_PROFILE_IMAGE_ERROR = 'ADD_PROFILE_IMAGE_ERROR';
+
 export const FETCH_MY_INFO_START = 'FETCH_MY_INFO_START';
 export const FETCH_MY_INFO_SUCCESS = 'FETCH_MY_INFO_SUCCESS';
 export const FETCH_MY_INFO_ERROR = 'FETCH_MY_INFO_ERROR';
@@ -121,6 +125,25 @@ export const addItemImage = (authState, itemId, photoUrl) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: ADD_ITEM_IMAGE_ERROR, payload: err });
+    });
+};
+
+//<------------addProfileImage---------------------->
+export const addProfileImage = (authState, profileId, photoUrl) => dispatch => {
+  dispatch({ type: ADD_PROFILE_IMAGE_START });
+  putData(
+    process.env.REACT_APP_API_URI + 'profile',
+    {
+      avatarUrl: photoUrl,
+      id: profileId,
+    },
+    authState
+  )
+    .then(response => {
+      dispatch({ type: ADD_PROFILE_IMAGE_SUCCESS, payload: response });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_PROFILE_IMAGE_ERROR, payload: err });
     });
 };
 

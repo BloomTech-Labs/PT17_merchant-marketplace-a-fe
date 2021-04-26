@@ -7,7 +7,7 @@ import {
   fetchCategories,
   fetchTags,
 } from '../../../../state/actions';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import NavBar from '../../../common/navBar';
 import SearchResults from './searchResults';
@@ -26,6 +26,7 @@ function CurrentInventory({
 }) {
   const [searchData, setSearchData] = useState({});
   const { authState } = useOktaAuth();
+  const history = useHistory();
 
   useEffect(() => {
     fetchProducts(authState);
@@ -34,6 +35,10 @@ function CurrentInventory({
   }, []);
 
   const displayedData = useSearch(inventory, 'item_name', searchData);
+
+  const addItemRedirect = () => {
+    history.push('/myprofile/inventory/additem');
+  };
 
   return (
     <>
@@ -49,11 +54,14 @@ function CurrentInventory({
           <Breadcrumb.Item href="/myprofile">Dashboard</Breadcrumb.Item>
         </Breadcrumb>
       </Layout>
-      <Link to="/myprofile/inventory/additem">
-        <Button>+Add Item</Button>
-      </Link>
+      <Button
+        style={{ margin: '100px 0px 0px 50px' }}
+        onClick={addItemRedirect}
+      >
+        +Add Item
+      </Button>
       {/* <NavBar searchVisible={false} setData={setSearchData} /> */}
-      <div className="outerContainer">
+      <div className="outerContainer" style={{ marginTop: '-50px' }}>
         <div className="contents">
           <SearchResults data={displayedData} filter={searchData} />
         </div>

@@ -11,6 +11,7 @@ import addProductTagReducer from './addProductTagReducer';
 import tagsReducer from './tagsReducer';
 import deleteProductReducer from './deleteProductReducer';
 import editProductReducer from './editProductReducer';
+import editProfileImageReducer from './editProfileImageReducer';
 
 const reducers = combineReducers({
   products: productsReducer,
@@ -25,6 +26,7 @@ const reducers = combineReducers({
   tags: tagsReducer,
   deleteProduct: deleteProductReducer,
   editProduct: editProductReducer,
+  editProfilePic: editProfileImageReducer,
 });
 
 export default reducers;
