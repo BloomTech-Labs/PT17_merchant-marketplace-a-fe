@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './landing.css';
 import FeaturedProduct from './FeaturedProduct';
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 import logo from '../Landing/banner.png';
 import selling from '../Landing/s-l960.webp';
 import axios from 'axios';
@@ -34,7 +35,7 @@ const Landing = () => {
             for all things style
           </p>
           <Link to="/login">
-            <button>Sign Up</button>
+            <Button>Sign Up</Button>
           </Link>
         </div>
         <img

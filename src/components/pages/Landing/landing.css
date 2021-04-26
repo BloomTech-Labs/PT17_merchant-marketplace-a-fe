@@ -88,6 +88,16 @@
   font-size: 1.4rem;
   padding-top: 1%;
 }
+.selling .selling_text button{
+  background-color: transparent;
+    border-color: #515151;
+  margin: 3% ;
+}
+.selling_text button:hover, .selling_text button:focus{
+  color:black;
+  background-color: transparent;
+  border-color: #515151;
+}
 .selling .selling_img{
   max-width: 60%;
   border-radius: 0 3% 3% 0;
