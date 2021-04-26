@@ -1,0 +1,38 @@
+.buyers-nav-main-container {
+    width: 60%;
+}
+
+.buyers-nav-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.buyers-nav-header {
+    width: 50%;
+    justify-self: start;
+    margin-top: 40px;
+}
+
+.buyers-nav-bar-container {
+    width: 100%;
+}
+.buyers-nav-bar-container ul {
+    display: flex;
+}
+
+
+.buyers-orders-container li{
+list-style-type: none;
+font-size: 16px;
+margin: auto;
+   
+}
+
+.buyers-orders-container li:hover {
+    cursor: pointer;
+    color: #0000EE
+}
+
+
+
