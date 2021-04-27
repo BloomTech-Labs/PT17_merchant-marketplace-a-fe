@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import LoadingProductCard from '../../../common/cards/normalItem/LoadingProductCard';
 import useSearch from '../../../common/customHooks/useSearch';
 import { NavLink } from 'react-router-dom';
-import { Card, Col, Row, Avatar } from 'antd';
+import { Card } from 'antd';
 
 const LazyItemCard = lazy(() => import('../../../common/cards/normalItem'));
 const { Meta } = Card;

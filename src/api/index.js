@@ -6,7 +6,7 @@ const productsUrl = `${process.env.REACT_APP_API_URI}items`;
 const searchUrl = `${process.env.REACT_APP_API_URI}search`;
 
 const search = async searchData => {
-  const { title, zip, address, category } = searchData;
+  const { title, zip } = searchData;
   return await axios.get(`${searchUrl}?title=${title}&zip=${zip}`);
 };
 
@@ -31,7 +31,6 @@ const getProductsData = async authState => {
   try {
     return await apiAuthGetProducts(getAuthHeader(authState));
   } catch (error) {
-    console.log(error);
     return [];
   }
 };
@@ -70,7 +69,6 @@ const getProfileData = async authState => {
   try {
     return (await apiAuthGet(getAuthHeader(authState))).data;
   } catch (error) {
-    console.log(error);
     return [];
   }
 };
@@ -79,7 +77,6 @@ const getOrdersData = async authState => {
   try {
     return await apiAuthGetOrders(getAuthHeader(authState));
   } catch (error) {
-    console.log(error);
     return [];
   }
 };
@@ -91,7 +88,6 @@ const getProfileIdData = (authState, oktaId) => {
     );
   } catch (error) {
     return new Promise(() => {
-      console.log(error);
       return [];
     });
   }
@@ -124,14 +120,14 @@ const deleteData = (url, authState) => {
   if (!url) {
     throw new Error('No URL provided');
   }
-  console.log('url', url);
   return axios
     .delete(url, { headers })
     .then(res => {
-      console.log('deleteData api res.data', res.data);
       JSON.parse(res.data);
     })
-    .catch(err => console.log('deleteData api error', err));
+    .catch(err => {
+      return null;
+    });
 };
 
 export {

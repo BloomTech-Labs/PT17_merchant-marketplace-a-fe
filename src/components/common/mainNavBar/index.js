@@ -13,7 +13,6 @@ import logo from '../mainNavBar/Merchant.png';
 import { SearchInput } from './Style';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
-import BrowseProducts from '../../pages/BrowseProducts';
 
 const IconFont = createFromIconfontCN({
   scriptUrl: [
@@ -37,7 +36,7 @@ function MainNavBar() {
   };
   const handleKeypress = e => {
     // it triggers by pressing enter key
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       search(e);
     }
   };
@@ -45,7 +44,11 @@ function MainNavBar() {
   return (
     <div className="nav-bar">
       <div className="title">
-        <img className="logo_1" src={logo}></img>
+        <img
+          alt="Merchant Marketplace Logo"
+          className="logo_1"
+          src={logo}
+        ></img>
       </div>
       <div className="navigation_links">
         <Link to="/" className="navigation_link">

@@ -78,8 +78,7 @@ function MoreInfo({ setData, setProgress, slider }) {
   };
   useEffect(() => {
     dispatch(fetchTags(authState));
-    console.log('Redux tag fetchTags state: ', tags);
-  }, [tagState]);
+  }, [tagState, authState, dispatch]);
 
   const handleCancel = () => {
     setVisible(false);

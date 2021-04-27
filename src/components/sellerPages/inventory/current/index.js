@@ -7,12 +7,10 @@ import {
   fetchCategories,
   fetchTags,
 } from '../../../../state/actions';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import NavBar from '../../../common/navBar';
 import SearchResults from './searchResults';
 import useSearch from '../../../common/customHooks/useSearch';
-import { Card, Col, Row } from 'antd';
 
 function CurrentInventory({
   state,
@@ -24,7 +22,7 @@ function CurrentInventory({
   getCategoriesStatus,
   getTagsStatus,
 }) {
-  const [searchData, setSearchData] = useState({});
+  const [searchData] = useState({});
   const { authState } = useOktaAuth();
   const history = useHistory();
 
@@ -32,7 +30,7 @@ function CurrentInventory({
     fetchProducts(authState);
     fetchCategories(authState);
     fetchTags(authState);
-  }, []);
+  }, [authState, fetchCategories, fetchProducts, fetchTags]);
 
   const displayedData = useSearch(inventory, 'item_name', searchData);
 

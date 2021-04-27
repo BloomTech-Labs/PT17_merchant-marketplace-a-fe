@@ -1,6 +1,6 @@
 import { useOktaAuth } from '@okta/okta-react';
-import React, { useEffect, useState } from 'react';
-import { Form, Input, Button, Checkbox, InputNumber, Select } from 'antd';
+import React from 'react';
+import { Form, Input, Button, Checkbox, InputNumber } from 'antd';
 import { useDispatch } from 'react-redux';
 import { editProduct } from '../../../state/actions';
 
@@ -15,7 +15,7 @@ const UpdateProduct = props => {
     props.setUpdateToggle(!props.updateToggle);
   };
   const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
+    return null;
   };
   const cancelEdit = e => {
     props.setUpdateToggle(!props.updateToggle);

@@ -10,19 +10,16 @@ function TestItemImageUpload({ addItemImage }) {
 
   // Callback that runs when the file is successfully uploaded
   function onChange(fileInfo) {
-    console.log('fileinfo: ', fileInfo);
     addItemImage(authState, 1, fileInfo.originalUrl);
   }
 
   function openUploadDialog(e) {
-    console.log('clicked the custom upload button');
     let dialog = uploadcare.openDialog(null, {
       publicKey: '7f074009b333b2d5be63',
       imagesOnly: true,
     });
     dialog.done(function(file, fileGroup, list) {
       file.promise().done(function(fileInfo) {
-        console.log('fileinfo: ', fileInfo);
         addItemImage(authState, 1, fileInfo.originalUrl);
       });
     });

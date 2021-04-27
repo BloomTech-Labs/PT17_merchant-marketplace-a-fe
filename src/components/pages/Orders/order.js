@@ -24,7 +24,7 @@ function Order(props) {
         </div>
 
         <div className="order-item-container">
-          <img src={logo} />
+          <img alt="Merchant Marketplace Logo" src={logo} />
 
           <div className="order-description">
             <div className="item-name-container">

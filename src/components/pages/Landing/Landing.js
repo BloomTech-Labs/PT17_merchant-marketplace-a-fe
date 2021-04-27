@@ -15,12 +15,15 @@ const Landing = () => {
         setProducts(response.data.sort(() => 0.5 - Math.random()).slice(0, 12))
       );
   }, []);
-  console.log(products);
   return (
     <div className="landing_container">
       <h1 className="header">Antique and Vintage Collection</h1>
       <div className="banner">
-        <img src={logo} className="banner_img" />
+        <img
+          alt="merchant marketplace logo"
+          src={logo}
+          className="banner_img"
+        />
       </div>
       <div className="featured_container">
         <h1 className="title">Featured Listings</h1>

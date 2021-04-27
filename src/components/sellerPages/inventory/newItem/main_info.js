@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Form, Input, Cascader, InputNumber, Checkbox, Select } from 'antd';
+import React from 'react';
+import { Form, Input, InputNumber, Checkbox } from 'antd';
 import FormButton from '../../../common/FormButton/FormButton';
 import '../inventoryStyles.css';
-const { Option } = Select;
 
 function NewItem({ setProgress, slider, setData }) {
   const [form] = Form.useForm();
@@ -15,21 +14,12 @@ function NewItem({ setProgress, slider, setData }) {
       ...form.getFieldsValue(),
       [e[0].name]: e[0].value,
     });
-    console.log(form.getFieldsValue());
-  };
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
   };
 
   return (
     <div className="contents" style={{ height: '600px' }}>
       <h1>Main Information</h1>
-      <Form
-        form={form}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        onFieldsChange={onChange}
-      >
+      <Form form={form} onFinish={onFinish} onFieldsChange={onChange}>
         {/*======================Product Name========================== */}
         <Form.Item
           name="item_name"

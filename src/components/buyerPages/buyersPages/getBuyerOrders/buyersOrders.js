@@ -26,7 +26,7 @@ function BuyersOrders() {
         <div className="order-details-container">
           <div className="order-details">
             <div>
-              <img className="order-image" src={marketImage} />
+              <img alt="" className="order-image" src={marketImage} />
             </div>
             <div className="item-details-one">
               <div>

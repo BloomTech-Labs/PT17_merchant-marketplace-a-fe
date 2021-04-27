@@ -1,9 +1,7 @@
 import React from 'react';
-import SmallItemCard from '../../../../common/cards/smallItem';
 import { WechatOutlined, PlusOutlined } from '@ant-design/icons';
 import './customStyles.css';
 import { Link } from 'react-router-dom';
-import { Chart } from 'react-charts';
 
 function CustomerSection() {
   return (
@@ -15,7 +13,6 @@ function CustomerSection() {
         </div>
       </div>
 
-      {/* <SmallItemCard headerText={36} descText="Customers" /> */}
       <Link>
         <button type="button" class="btn btn-primary float-right">
           View Messages

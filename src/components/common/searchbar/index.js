@@ -11,25 +11,6 @@ function SearchBar({ searchVisible, setData }) {
   function onSearch(values) {
     setData(values);
   }
-
-  function publishedChange() {
-    setData('$#&published');
-  }
-  function unPublishedChange() {
-    setData('$#&unpublished');
-  }
-  function mainChange() {
-    setData('$#&main');
-  }
-
-  function sortChange(value) {
-    console.log(`selected sortBy: ${value}`);
-  }
-
-  function categoryChange(value) {
-    console.log(`selected category: ${value}`);
-  }
-
   useEffect(() => {
     if (searchVisible === false) {
       setInView('inView');

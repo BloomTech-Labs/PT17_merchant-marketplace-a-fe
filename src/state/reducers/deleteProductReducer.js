@@ -15,7 +15,6 @@ const deleteProductReducer = (state = initialState, action) => {
     case DELETE_PRODUCT_START:
       return { ...state, getDeleteProductStatus: requestStatus.loading };
     case DELETE_PRODUCT_SUCCESS:
-      console.log(action.payload);
       return {
         deletedProduct: action.payload,
         getDeleteProductStatus: requestStatus.loading,

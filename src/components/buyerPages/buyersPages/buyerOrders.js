@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../../common/navBar';
 import './buyersOrders.css';
 import BuyersNav from './buyersNav/buyerNavSearch/buyersNav';
 import GetBuyerOrders from './getBuyerOrders/getBuyersOrders';

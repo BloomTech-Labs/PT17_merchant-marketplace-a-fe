@@ -1,5 +1,4 @@
 import React from 'react';
-import { getExampleData, getProfileData, apiAuthGetOrders } from '../../../api';
 import NavBar from '../../common/navBar';
 import GetOrders from './getOrders';
 

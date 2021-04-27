@@ -10,7 +10,7 @@ const FeaturedProduct = props => {
   return (
     <div className="feature_card">
       <Link to="/" className="feature_card_link">
-        <img src={props.item.images[0]} className="product_img" />
+        <img alt="" src={props.item.images[0]} className="product_img" />
         <p className="product_title">{props.item.item_name}</p>
         <p className="price">{dollars}</p>
       </Link>

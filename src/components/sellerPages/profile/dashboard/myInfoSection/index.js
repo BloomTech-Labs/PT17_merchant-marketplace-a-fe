@@ -8,30 +8,20 @@ import {
   addProfileImage,
 } from '../../../../../state/actions';
 import { useOktaAuth } from '@okta/okta-react';
-import {
-  Menu,
-  Dropdown,
-  Button,
-  Space,
-  Badge,
-  Breadcrumb,
-  Layout,
-  Avatar,
-  Descriptions,
-  Upload,
-} from 'antd';
+import { Breadcrumb, Layout, Avatar, Descriptions } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
 import uploadcare from 'uploadcare-widget';
 
 function MyInfo(props) {
   const history = useHistory();
   const { authState } = useOktaAuth();
-  const [photos, setPhotos] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    props.fetchMyInfo(authState);
-  }, []);
+    if (loading || !loading) {
+      props.fetchMyInfo(authState);
+    }
+  }, [authState, loading, props]);
 
   function clicked(event) {
     history.push('/myprofile/editinfo');
@@ -47,7 +37,6 @@ function MyInfo(props) {
       file.promise().done(function(fileInfo) {
         setLoading(false);
         props.addProfileImage(authState, props.myInfo.id, fileInfo.originalUrl);
-        console.log('fileinfo: ', fileInfo);
       });
     });
   }

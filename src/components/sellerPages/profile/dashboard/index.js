@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './dashboard.css';
 import InvSection from './invSection';
 import OrderSection from './orderSection';

@@ -61,8 +61,8 @@ const Footer = () => {
             Terms of Service
           </Link>
           <div className="widgets">
-            <img src={apple} className="apple" />
-            <img src={google} className="google" />
+            <img alt="apple" src={apple} className="apple" />
+            <img alt="google" src={google} className="google" />
           </div>
         </div>
       </div>

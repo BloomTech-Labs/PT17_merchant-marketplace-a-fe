@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Carousel } from 'antd';
+import { Carousel } from 'antd';
 import './inventoryStyles.css';
 import NewItem from './newItem/main_info';
 import CategoriesInfo from './newItem/categories_info';
@@ -30,7 +30,6 @@ function Inventory({
   let seller_profile_id = oktaStore.idToken.claims.sub;
 
   // Final Data State
-  const [newItemData, setNewItemData] = useState({});
   // State for each form section
   const [mainInfo, setMainInfo] = useState({});
   const [categoryInfo, setCategoryInfo] = useState([]);
@@ -54,8 +53,6 @@ function Inventory({
         photos,
       },
     };
-    debugger;
-    setNewItemData(completeObject);
 
     addProduct(completeObject, authState).then(response => {
       debugger;
@@ -117,18 +114,6 @@ function Inventory({
             />
           </Carousel>
         </div>
-
-        <Button
-          onClick={() => {
-            console.log(mainInfo);
-            console.log(categoryInfo);
-            console.log(tagInfo);
-            console.log(photos);
-            console.log('final object:', newItemData);
-          }}
-        >
-          Console Log
-        </Button>
       </div>
     </>
   );

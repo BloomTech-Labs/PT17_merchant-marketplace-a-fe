@@ -9,9 +9,9 @@ export default function useSearch(initialData, keyCategory, searchData) {
       output = initialData.filter(item => !item.published);
     } else {
       initialData.map(item => {
-        output = initialData.filter(item =>
+        return (output = initialData.filter(item =>
           item[keyCategory].toLowerCase().includes(searchData.toLowerCase())
-        );
+        ));
       });
     }
 

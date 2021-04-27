@@ -19,10 +19,9 @@ function EditInfo(props) {
 
   useEffect(() => {
     props.fetchMyInfo(authState);
-  }, []);
+  }, [authState, props]);
 
   function editForm(e) {
-    console.log('sellerform', sellerForm);
     setSellerForm({
       ...sellerForm,
       [e.target.name]: e.target.value,
@@ -114,7 +113,6 @@ function EditInfo(props) {
 }
 
 const mapStateToProps = state => {
-  console.log('state in editInfo', state.information.myInfo);
   return {
     myInfo: state.information.myInfo,
     loading: state.information.fetchMyInfoStatus,

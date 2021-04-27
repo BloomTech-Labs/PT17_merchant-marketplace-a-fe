@@ -1,6 +1,6 @@
 import { useOktaAuth } from '@okta/okta-react';
-import React, { useState, useEffect } from 'react';
-import { Rate, Avatar, Tag } from 'antd';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Avatar, Tag } from 'antd';
 import {
   GlobalOutlined,
   MinusCircleOutlined,
@@ -15,22 +15,23 @@ const NewItemInfo = ({ photos, mainInfo, categoryInfo, tagInfo }) => {
   let seller_profile_id = oktaStore.idToken.claims.sub;
 
   //<----------------Get Seller Profile---------------->
-  const getSellerProfile = id => {
-    getDSData(`${process.env.REACT_APP_API_URI}profile/${id}`, authState)
-      .then(res => setSellerProfile(res))
-      .catch(err => {
-        console.log('Seller Name get fail in ItemCard');
-      });
-  };
+  const getSellerProfile = useCallback(
+    id => {
+      getDSData(`${process.env.REACT_APP_API_URI}profile/${id}`, authState)
+        .then(res => setSellerProfile(res))
+        .catch(err => {});
+    },
+    [authState]
+  );
   useEffect(() => {
     getSellerProfile(seller_profile_id);
-  }, []);
+  }, [getSellerProfile, seller_profile_id]);
   let dollars = mainInfo.price_in_cents / 100;
   return (
     <div className="product-page">
       <div className="product-container-newitem">
         <div>
-          <img src={photos} />
+          <img alt="" src={photos} />
         </div>
 
         <div className="newitem">

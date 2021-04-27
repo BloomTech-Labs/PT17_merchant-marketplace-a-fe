@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import OrderCard from '../../../../common/cards/orderCard';
 
 function OrderSection() {
   return (

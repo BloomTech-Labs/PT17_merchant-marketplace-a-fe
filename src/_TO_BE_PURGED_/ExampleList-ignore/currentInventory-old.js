@@ -31,14 +31,6 @@ function CurrentInventory({ inventory, fetchProducts, getProductsStatus }) {
           </Link>
         </div>
       </div>
-      <Button
-        onClick={() => {
-          console.log(inventory);
-          console.log(fetchProducts);
-        }}
-      >
-        Console Log
-      </Button>
     </>
   );
 }

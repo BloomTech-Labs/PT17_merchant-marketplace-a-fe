@@ -1,7 +1,6 @@
 import { useOktaAuth } from '@okta/okta-react';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getDSData } from '../../../api';
-import ProductCarousel from '../ProductPage/ProductCarousel';
 import { Rate, Avatar, Tag, Button } from 'antd';
 import {
   GlobalOutlined,
@@ -30,21 +29,27 @@ const ProductInfo = ({ item }) => {
   let seller_profile_id = oktaStore.idToken.claims.sub;
 
   //<----------------Get Element---------------->
-  const getElement = (id, url, setState, errMessage) => {
-    getDSData(`${process.env.REACT_APP_API_URI}${url}${id}`, authState)
-      .then(res => setState(res))
-      .catch(err => {
-        console.log(errMessage);
-      });
-  };
+  const getElement = useCallback(
+    (id, url, setState, errMessage) => {
+      getDSData(`${process.env.REACT_APP_API_URI}${url}${id}`, authState)
+        .then(res => setState(res))
+        .catch(err => {
+          return null;
+        });
+    },
+    [authState]
+  );
   //<----------------Get Image---------------->
-  const imgGet = id => {
-    getDSData(`${process.env.REACT_APP_API_URI}photo/${id}`, authState)
-      .then(res => setImg(res[0]['url']))
-      .catch(err => {
-        console.log('Img get fail in ProductInfo.');
-      });
-  };
+  const imgGet = useCallback(
+    id => {
+      getDSData(`${process.env.REACT_APP_API_URI}photo/${id}`, authState)
+        .then(res => setImg(res[0]['url']))
+        .catch(err => {
+          return null;
+        });
+    },
+    [authState]
+  );
   //--------------delete product ---------------->
   const delProduct = e => {
     e.preventDefault();
@@ -67,20 +72,21 @@ const ProductInfo = ({ item }) => {
       'Category get fail in ItemCard'
     );
     getElement(item.id, 'tag/item/', setTags, 'Tag get fail in ItemCard');
-  }, []);
+  }, [getElement, imgGet, item.id, seller_profile_id]);
 
   //-------------Edit Item---------------
-  const getItem = id => {
-    getDSData(`${process.env.REACT_APP_API_URI}item/${id}`, authState)
-      .then(res => setUpdatedProduct(res[0]))
-      .catch(err => {
-        console.log('Edit Product fail in ItemCard');
-      });
-  };
+  const getItem = useCallback(
+    id => {
+      getDSData(`${process.env.REACT_APP_API_URI}item/${id}`, authState)
+        .then(res => setUpdatedProduct(res[0]))
+        .catch(err => {});
+    },
+    [authState]
+  );
 
   useEffect(() => {
     getItem(item.id);
-  }, [editProductState]);
+  }, [editProductState, getItem, item.id]);
 
   const toggle = () => {
     setUpdateToggle(!updateToggle);
@@ -122,7 +128,7 @@ const ProductInfo = ({ item }) => {
 
           <div className="product-container">
             <div>
-              <img src={img} />
+              <img alt="" src={img} />
             </div>
 
             <div className="item">
